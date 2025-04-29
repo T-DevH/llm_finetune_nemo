@@ -93,13 +93,34 @@ chmod +x scripts/*.sh
 ```
 
 3. Download and extract the model:
+
+Before starting fine-tuning, you need to download and extract the base model.
+
+I provide a convenient script to handle this automatically.
+
+### Steps:
+
+1. Make the script executable:
 ```bash
 ./scripts/extract_nemo_model.sh
 ```
 This will:
-- Download the 345M GPT model from NGC
-- Save it to `models/megatron_gpt_345m.nemo`
-- Extract it to `models/megatron_gpt_345m/`
+   - Create the models/ directory if it doesn't exist.
+   - Download the .nemo model file if it's missing.
+   - Extract the model into models/<model_name>/.
+   - Skip downloading and extraction if the model already exists and is ready.
+
+### Output Structure:
+
+```
+.
+models/
+ ├── megatron_gpt_345m.nemo
+ └── megatron_gpt_345m/
+      ├── model_config.yaml
+      ├── model_weights/
+      └── tokenizer/
+```
 
 4. Prepare your data:
    - Place training data in `data/train/data.jsonl`
