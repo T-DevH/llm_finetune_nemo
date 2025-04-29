@@ -1,0 +1,163 @@
+name: megatron_gpt_peft_full_tuning
+
+# Training settings
+trainer:
+  devices: 1
+  accelerator: gpu
+  num_nodes: 1
+  precision: bf16-mixed
+  logger: false
+  enable_checkpointing: false
+  use_distributed_sampler: false
+  max_epochs: 9999
+  max_steps: 20000
+  log_every_n_steps: 10
+  val_check_interval: 200
+  gradient_clip_val: 1.0
+
+# Experiment management
+exp_manager:
+  explicit_log_dir: null
+  exp_dir: /workspace/results
+  name: ${name}
+  create_wandb_logger: false
+  wandb_logger_kwargs:
+    project: null
+    name: null
+  resume_if_exists: true
+  resume_ignore_no_checkpoint: true
+  create_checkpoint_callback: true
+  checkpoint_callback_params:
+    monitor: validation_${model.data.validation_ds.metric.name}  # Fixed interpolation
+    save_top_k: 1
+    mode: min
+    save_nemo_on_train_end: true
+    filename: ${name}--{${exp_manager.checkpoint_callback_params.monitor}:.3f}-{step}-{consumed_samples}
+    model_parallel_size: ${model.tensor_model_parallel_size}
+    always_save_nemo: false
+    save_best_model: true
+  create_early_stopping_callback: true
+  early_stopping_callback_params:
+    monitor: val_loss
+    mode: min
+    min_delta: 0.001
+    patience: 20
+    verbose: true
+    strict: false
+
+# Model configuration
+model:
+  seed: 1234
+  tensor_model_parallel_size: 1
+  pipeline_model_parallel_size: 1
+  global_batch_size: 128
+  micro_batch_size: 4
+  restore_from_path: /workspace/models/megatron_gpt_345m/megatron_gpt_345m.nemo
+  resume_from_checkpoint: null
+  save_nemo_on_validation_end: false
+  sync_batch_comm: false
+  megatron_amp_O2: false
+  sequence_parallel: false
+  gradient_as_bucket_view: false
+
+  # Activation checkpointing
+  activations_checkpoint_granularity: null
+  activations_checkpoint_method: null
+  activations_checkpoint_num_layers: null
+  activations_checkpoint_layers_per_pipeline: null
+
+  # Dropout settings
+  hidden_dropout: 0.1
+  attention_dropout: 0.1
+  ffn_dropout: 0.1
+
+  # FSDP settings (currently off)
+  fsdp: false
+  fsdp_sharding_strategy: full
+  fsdp_grad_reduce_dtype: fp32
+  fsdp_sharded_checkpoint: false
+  fsdp_use_orig_params: false
+
+  # Dataset configuration
+  data:
+    train_ds:
+      file_names: [/workspace/data/train/data.jsonl]
+      global_batch_size: ${model.global_batch_size}
+      micro_batch_size: ${model.micro_batch_size}
+      shuffle: true
+      num_workers: 8
+      memmap_workers: 4
+      prefetch_factor: 2
+      pin_memory: true
+      max_seq_length: 2048
+      min_seq_length: 1
+      drop_last: true
+      label_key: output
+      add_eos: true
+      add_sep: false
+      add_bos: false
+      truncation_field: input
+      prompt_template: '{input} {output}'
+      truncation_method: right
+      index_mapping_dir: null
+      concat_sampling_probabilities: [1.0]
+
+    validation_ds:
+      file_names: [/workspace/data/val/data.jsonl]
+      global_batch_size: ${model.global_batch_size}
+      micro_batch_size: ${model.micro_batch_size}
+      shuffle: false
+      num_workers: 8
+      memmap_workers: ${model.data.train_ds.memmap_workers}
+      prefetch_factor: 2
+      pin_memory: true
+      max_seq_length: 2048
+      min_seq_length: 1
+      drop_last: false
+      label_key: ${model.data.train_ds.label_key}
+      add_eos: ${model.data.train_ds.add_eos}
+      add_sep: ${model.data.train_ds.add_sep}
+      add_bos: ${model.data.train_ds.add_bos}
+      truncation_field: ${model.data.train_ds.truncation_field}
+      prompt_template: ${model.data.train_ds.prompt_template}
+      write_predictions_to_file: false
+      output_file_path_prefix: null
+      tokens_to_generate: 32
+      truncation_method: right
+      concat_sampling_probabilities: [1.0]
+      metric:
+        name: loss
+        average: null
+        num_classes: null
+
+  # PEFT configuration
+  peft:
+    peft_scheme: lora
+    lora_tuning:
+      variant: nemo
+      target_modules:
+        - attention_qkv
+      adapter_dim: 32
+      alpha: 32
+      adapter_dropout: 0.0
+      column_init_method: xavier
+      row_init_method: zero
+      layer_selection: null
+      weight_tying: false
+      position_embedding_strategy: null
+
+  # Optimizer configuration
+  optim:
+    name: fused_adam
+    lr: 0.0001
+    weight_decay: 0.01
+    betas:
+      - 0.9
+      - 0.98
+    sched:
+      name: CosineAnnealing
+      warmup_steps: 200
+      min_lr: 0.0
+      constant_steps: 0
+      monitor: val_loss
+      reduce_on_plateau: false
