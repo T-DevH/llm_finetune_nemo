@@ -41,10 +41,12 @@ nemo_lora/
 *.ipynb
 
 # Model files and checkpoints
-models/*.nemo
-models/*.ckpt
+# Ignore all model files, checkpoints, and training outputs
+models/
 results/
 checkpoints/
+*.nemo
+*.ckpt
 
 # Logs
 logs/
@@ -71,3 +73,4 @@ logs/
 Thumbs.db
 models/
 results/
+models/
