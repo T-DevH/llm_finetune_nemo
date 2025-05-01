@@ -84,3 +84,6 @@ logs/
 checkpoints/
 models/
 *.nemo
+
+training_loss_plot.png
+
