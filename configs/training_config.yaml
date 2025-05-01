@@ -52,7 +52,7 @@ model:
   pipeline_model_parallel_size: 1
   global_batch_size: 128
   micro_batch_size: 4
-  restore_from_path: /workspace/models/megatron_gpt_345m/megatron_gpt_345m.nemo
+  restore_from_path: /workspace/models/megatron_gpt_345m.nemo
   resume_from_checkpoint: null
   save_nemo_on_validation_end: false
   sync_batch_comm: false
