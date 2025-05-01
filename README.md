@@ -79,6 +79,70 @@ Example:
 {"input": "This is a sample training text.", "output": "training"}
 ```
 
+## Data Generation
+
+The project includes a synthetic data generation module (`src/data_generation/generate_retail_data.py`) that creates training data for retail customer service scenarios. This module:
+
+- Generates realistic customer service conversations with:
+  - Various products (smartphones, laptops, headphones, etc.)
+  - Different types of issues (not working, damaged, missing parts, etc.)
+  - Multiple resolution actions (return, replace, refund, repair, exchange)
+  - Different customer tones (frustrated, polite, angry, confused, satisfied)
+
+- Creates structured JSONL files with:
+  - System prompt for the model
+  - Customer input (query/issue)
+  - Expected output (customer service response)
+
+- Supports generating datasets for:
+  - Training (default: 1000 samples)
+  - Validation (default: 300 samples)
+  - Testing (default: 300 samples)
+
+- Automatically cleans up old data files before generating new ones
+
+Usage:
+```bash
+python src/data_generation/generate_retail_data.py \
+    --train_samples 1000 \
+    --val_samples 300 \
+    --test_samples 300 \
+    --output_dir data
+```
+
+## Model Extraction
+
+The `extract_nemo_model.sh` script handles downloading and preparing the base model:
+
+1. Downloads the Megatron GPT 345M model from NGC
+2. Places it in the correct directory structure
+3. Verifies the extraction
+
+Usage:
+```bash
+./scripts/extract_nemo_model.sh
+```
+
+## Training
+
+The training process uses LoRA (Low-Rank Adaptation) for efficient fine-tuning:
+
+- Adapter dimension: 32
+- Alpha: 32
+- Target modules: attention_qkv
+- Training settings:
+  - Devices: 1
+  - Precision: bf16-mixed
+  - Max steps: 20000
+  - Validation interval: 200
+  - Global batch size: 128
+  - Micro batch size: 4
+
+Usage:
+```bash
+./scripts/run_nemo_container.sh
+```
+
 ## Getting Started
 
 1. Clone the repository:
