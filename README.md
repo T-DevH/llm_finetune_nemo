@@ -343,3 +343,123 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 3. Commit your changes
 4. Push to the branch
 5. Create a Pull Request
+
+## Deployment
+
+The project includes a FastAPI-based deployment setup for serving the fine-tuned model. The deployment configuration uses Docker and supports GPU acceleration.
+
+### Prerequisites
+
+- Docker and NVIDIA Container Toolkit installed
+- NVIDIA GPU with compatible drivers (tested with driver version 550.144.03)
+- At least 16GB of GPU memory recommended
+- Docker Compose installed
+
+### Deployment Structure
+
+```
+src/deployment/
+├── app/                    # Application code
+│   ├── main.py            # FastAPI application
+│   ├── model.py           # Model loading and inference
+│   └── config.py          # Configuration settings
+├── Dockerfile             # Container definition
+├── docker-compose.yml     # Container orchestration
+└── requirements.txt       # Python dependencies
+```
+
+### Configuration
+
+The deployment uses the following key configurations:
+
+1. **Model Path**: The fine-tuned model is mounted from:
+   ```
+   results/megatron_gpt_peft_adapter_tuning/checkpoints/megatron_gpt_peft_adapter_tuning.nemo
+   ```
+
+2. **API Endpoints**:
+   - Health Check: `GET /healthcheck`
+   - Text Generation: `POST /generate`
+     ```json
+     {
+       "input_text": "Your input text here"
+     }
+     ```
+
+3. **Generation Parameters**:
+   - Max length: 512 tokens
+   - Temperature: 0.7
+   - Top-p: 0.9
+   - Repetition penalty: 1.2
+
+### Deployment Steps
+
+1. Navigate to the deployment directory:
+   ```bash
+   cd src/deployment
+   ```
+
+2. Build and start the container:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. The API will be available at:
+   ```
+   http://localhost:8000
+   ```
+
+### Testing the Deployment
+
+1. Health Check:
+   ```bash
+   curl http://localhost:8000/healthcheck
+   ```
+
+2. Generate Text:
+   ```bash
+   curl -X POST http://localhost:8000/generate \
+     -H "Content-Type: application/json" \
+     -d '{"input_text": "Your input text here"}'
+   ```
+
+### Resource Requirements
+
+- GPU Memory: Minimum 16GB recommended
+- System Memory: Minimum 32GB recommended
+- Storage: At least 10GB free space for model and container
+
+### Troubleshooting
+
+1. **NVIDIA Driver Issues**:
+   - Ensure NVIDIA drivers are installed and up to date
+   - Verify NVIDIA Container Toolkit is properly installed
+   - Check GPU visibility with `nvidia-smi`
+
+2. **Container Issues**:
+   - Check container logs: `docker-compose logs`
+   - Verify model path is correct in `config.py`
+   - Ensure sufficient GPU memory is available
+
+3. **API Issues**:
+   - Verify the API is running: `curl http://localhost:8000/healthcheck`
+   - Check application logs for detailed error messages
+   - Ensure proper input format in requests
+
+### Monitoring
+
+The deployment includes:
+- Basic health check endpoint
+- Logging of model loading and inference
+- Error handling and reporting
+- GPU utilization monitoring through NVIDIA tools
+
+### Security Considerations
+
+1. The API is currently configured for local development
+2. For production deployment:
+   - Add authentication
+   - Enable HTTPS
+   - Implement rate limiting
+   - Add input validation
+   - Configure proper logging and monitoring
