@@ -1,6 +1,6 @@
 # LLM Fine-tuning with NVIDIA NeMo
 
-This project provides a streamlined approach to fine-tuning large language models using NVIDIA's NeMo framework. It includes scripts for model training, progress monitoring, and configuration management.
+This repository is designed to deliver a streamlined and practical developer experience with NVIDIA NeMo — a powerful, modular framework that serves as the Swiss Army knife for building, fine-tuning, and deploying large language models. It encapsulates best practices for Parameter-Efficient Fine-Tuning (PEFT) using LoRA, and provides a full training pipeline including configurable scripts, real-time training progress monitoring, and model management. Whether you're experimenting with small-scale prototypes or fine-tuning large models for production, this repo offers an end-to-end workflow tailored for both research and applied use.
 
 ## Features
 
