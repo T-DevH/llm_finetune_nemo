@@ -301,49 +301,6 @@ Training results and model checkpoints are saved in the `results/` directory. Th
 - Final model checkpoint
 - Training logs and metrics
 
-## Troubleshooting
-
-Common issues and solutions:
-1. Memory issues: 
-   - Adjust `micro_batch_size` in the config file
-   - Enable gradient checkpointing
-   - Reduce sequence length if needed
-2. Training instability: 
-   - Adjust learning rate or warmup steps
-   - Enable dropout for regularization
-   - Increase batch size if possible
-3. Container errors: 
-   - Verify NGC authentication and API key
-   - Check Docker and NVIDIA Container Toolkit installation
-4. Data format errors: 
-   - Ensure JSONL files follow the required format
-   - Validate data using the data generation utilities
-5. Model extraction issues:
-   - Check NGC API key and authentication
-   - Verify sufficient disk space
-   - Ensure Python environment has required dependencies
-6. Performance issues:
-   - Increase number of workers for data loading
-   - Enable prefetching
-   - Optimize memmap workers
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- NVIDIA NeMo team for the framework
-- NVIDIA NIM team for the optimized models
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
 ## Deployment
 
 The project includes a FastAPI-based deployment setup for serving the fine-tuned model. The deployment configuration uses Docker and supports GPU acceleration.
@@ -431,35 +388,43 @@ The deployment uses the following key configurations:
 
 ### Troubleshooting
 
-1. **NVIDIA Driver Issues**:
-   - Ensure NVIDIA drivers are installed and up to date
-   - Verify NVIDIA Container Toolkit is properly installed
-   - Check GPU visibility with `nvidia-smi`
+Common issues and solutions:
+1. Memory issues: 
+   - Adjust `micro_batch_size` in the config file
+   - Enable gradient checkpointing
+   - Reduce sequence length if needed
+2. Training instability: 
+   - Adjust learning rate or warmup steps
+   - Enable dropout for regularization
+   - Increase batch size if possible
+3. Container errors: 
+   - Verify NGC authentication and API key
+   - Check Docker and NVIDIA Container Toolkit installation
+4. Data format errors: 
+   - Ensure JSONL files follow the required format
+   - Validate data using the data generation utilities
+5. Model extraction issues:
+   - Check NGC API key and authentication
+   - Verify sufficient disk space
+   - Ensure Python environment has required dependencies
+6. Performance issues:
+   - Increase number of workers for data loading
+   - Enable prefetching
+   - Optimize memmap workers
 
-2. **Container Issues**:
-   - Check container logs: `docker-compose logs`
-   - Verify model path is correct in `config.py`
-   - Ensure sufficient GPU memory is available
+## License
 
-3. **API Issues**:
-   - Verify the API is running: `curl http://localhost:8000/healthcheck`
-   - Check application logs for detailed error messages
-   - Ensure proper input format in requests
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-### Monitoring
+## Acknowledgments
 
-The deployment includes:
-- Basic health check endpoint
-- Logging of model loading and inference
-- Error handling and reporting
-- GPU utilization monitoring through NVIDIA tools
+- NVIDIA NeMo team for the framework
+- NVIDIA NIM team for the optimized models
 
-### Security Considerations
+## Contributing
 
-1. The API is currently configured for local development
-2. For production deployment:
-   - Add authentication
-   - Enable HTTPS
-   - Implement rate limiting
-   - Add input validation
-   - Configure proper logging and monitoring
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
