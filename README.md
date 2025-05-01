@@ -59,7 +59,8 @@ source nemo_lora/bin/activate
 ├── scripts/             # Utility scripts
 │   ├── run_nemo_container.sh  # Main training script
 │   ├── monitor_training.sh    # Training monitoring script
-│   └── extract_nemo_model.sh  # Model download and extraction script
+│   ├── extract_nemo_model.sh  # Model download and extraction script
+│   └── plot_training_loss.py  # Training loss visualization script
 ├── src/                 # Source code
 │   ├── data_generation/ # Data generation utilities
 │   └── deployment/     # Deployment scripts
@@ -141,6 +142,31 @@ The training process uses LoRA (Low-Rank Adaptation) for efficient fine-tuning:
 Usage:
 ```bash
 ./scripts/run_nemo_container.sh
+```
+
+## Training Progress Visualization
+
+The project includes a script to visualize training progress using TensorBoard event files. The script creates a plot showing the training loss over time, with annotations for minimum and maximum loss values.
+
+Usage:
+```bash
+# Generate a plot from TensorBoard logs
+python scripts/plot_training_loss.py \
+    --log_dir results/megatron_gpt_peft_adapter_tuning \
+    --output training_loss_plot.png
+```
+
+The script features:
+- Automatic detection of loss metrics in TensorBoard event files
+- Clear visualization of training progression
+- Markers for significant steps (every 1000 steps)
+- Min/max loss annotations
+- High-resolution output (300 DPI)
+- Grid lines for better readability
+
+Requirements:
+```bash
+pip install tensorboard matplotlib
 ```
 
 ## Getting Started

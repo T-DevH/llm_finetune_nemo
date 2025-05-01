@@ -1,500 +1,300 @@
-{
-    "id": "test_1",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_2",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_3",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_4",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_5",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_6",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_7",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_8",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_9",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_10",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_11",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_12",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_13",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_14",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_15",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_16",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_17",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_18",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_19",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_20",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_21",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_22",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_23",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_24",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_25",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_26",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_27",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_28",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_29",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_30",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_31",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_32",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_33",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_34",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_35",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_36",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_37",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_38",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_39",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_40",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_41",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_42",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_43",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_44",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_45",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_46",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_47",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_48",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_49",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_50",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_51",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_52",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_53",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_54",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_55",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_56",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_57",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_58",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_59",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_60",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_61",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_62",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_63",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_64",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_65",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_66",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_67",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_68",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_69",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_70",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_71",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_72",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_73",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_74",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_75",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_76",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_77",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_78",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_79",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_80",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_81",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_82",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_83",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_84",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_85",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_86",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_87",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_88",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_89",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_90",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_91",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_92",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_93",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_94",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_95",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_96",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_97",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_98",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_99",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
-{
-    "id": "test_100",
-    "text": "This is a sample test text for fine-tuning. It demonstrates the format and structure needed for the model.",
-    "label": "test"
-}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to refund it.", "output": "I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your Speaker. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's doesn't match description. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's defective. I would like to replace it.", "output": "I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's defective. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Gaming Console. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's damaged. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your Gaming Console, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's doesn't match description. I would like to exchange it.", "output": "To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's wrong color. I would like to return it.", "output": "I understand you'd like to return the Laptop. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's wrong color. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not as expected. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Headphones. Please send your order number and details of the not as expected."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's not working. I would like to replace it.", "output": "I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's broken screen. I would like to return it.", "output": "I understand you'd like to return the Headphones. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's missing parts. I would like to refund it.", "output": "I can help with a refund for your Laptop. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's defective. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Camera. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's missing parts. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your Laptop, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's doesn't match description. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Headphones. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to replace it.", "output": "I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's doesn't match description. I would like to replace it.", "output": "I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's defective. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's missing parts. I would like to refund it.", "output": "I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's doesn't match description. I would like to refund it.", "output": "I can help with a refund for your Gaming Console. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's not working. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Gaming Console. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's defective. I would like to refund it.", "output": "I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's not as expected. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Camera. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to return it.", "output": "I understand you'd like to return the Speaker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's not as expected. I would like to exchange it.", "output": "To exchange your TV, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's damaged. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's broken screen. I would like to replace it.", "output": "I'm sorry about your Camera. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's defective. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your Headphones. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's not working. I would like to return it.", "output": "I understand you'd like to return the Camera. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not as expected. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not as expected. I would like to refund it.", "output": "I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Speaker. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's wrong color. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Gaming Console. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to return it.", "output": "I understand you'd like to return the Smartphone. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's doesn't match description. I would like to return it.", "output": "I understand you'd like to return the Smartphone. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's broken screen. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Speaker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to repair it.", "output": "Let's begin the repair process for your Smartphone. Please send your order number and details of the damaged."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's defective. I would like to replace it.", "output": "I'm sorry about your Smartwatch. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's doesn't match description. I would like to return it.", "output": "I understand you'd like to return the Smartwatch. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's wrong color. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Fitness Tracker. Please send your order number and details of the wrong color."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's missing parts. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's doesn't match description. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Laptop. Please send your order number and details of the doesn't match description."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's doesn't match description. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's damaged. I would like to exchange it.", "output": "To exchange your Laptop, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's damaged. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Fitness Tracker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's doesn't match description. I would like to replace it.", "output": "I'm sorry about your Laptop. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to exchange it.", "output": "To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's broken screen. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your TV. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to replace it.", "output": "I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's doesn't match description. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Smartphone. Please send your order number and details of the doesn't match description."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's missing parts. I would like to repair it.", "output": "Let's begin the repair process for your Speaker. Please send your order number and details of the missing parts."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not as expected. I would like to exchange it.", "output": "To exchange your Speaker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not working. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Fitness Tracker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's wrong color. I would like to repair it.", "output": "Let's begin the repair process for your Smartphone. Please send your order number and details of the wrong color."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to repair it.", "output": "Let's begin the repair process for your Smartphone. Please send your order number and details of the damaged."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not as expected. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Smartwatch. Please send your order number and details of the not as expected."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's doesn't match description. I would like to return it.", "output": "I understand you'd like to return the Gaming Console. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's broken screen. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not as expected. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Laptop. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's not as expected. I would like to return it.", "output": "I understand you'd like to return the Smartphone. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not as expected. I would like to exchange it.", "output": "To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's doesn't match description. I would like to repair it.", "output": "Let's begin the repair process for your Tablet. Please send your order number and details of the doesn't match description."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's missing parts. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's damaged. I would like to exchange it.", "output": "To exchange your Headphones, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's defective. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your TV. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's doesn't match description. I would like to return it.", "output": "I understand you'd like to return the Smartwatch. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not as expected. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Speaker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's damaged. I would like to replace it.", "output": "I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's damaged. I would like to return it.", "output": "I understand you'd like to return the Fitness Tracker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's missing parts. I would like to exchange it.", "output": "To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not working. I would like to replace it.", "output": "I'm sorry about your Fitness Tracker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's defective. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Laptop. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's missing parts. I would like to refund it.", "output": "I can help with a refund for your Smartphone. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's defective. I would like to repair it.", "output": "Let's begin the repair process for your Fitness Tracker. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's defective. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Gaming Console, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not working. I would like to repair it.", "output": "Let's begin the repair process for your Fitness Tracker. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not working. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Smartwatch. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's defective. I would like to repair it.", "output": "Let's begin the repair process for your Laptop. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's wrong color. I would like to exchange it.", "output": "To exchange your Fitness Tracker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's missing parts. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Laptop. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's not working. I would like to refund it.", "output": "I can help with a refund for your Gaming Console. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's not as expected. I would like to repair it.", "output": "Let's begin the repair process for your Smartphone. Please send your order number and details of the not as expected."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's damaged. I would like to repair it.", "output": "Let's begin the repair process for your Fitness Tracker. Please send your order number and details of the damaged."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's not as expected. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not as expected. I would like to refund it.", "output": "I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not as expected. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Laptop. Please send your order number and details of the not as expected."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's doesn't match description. I would like to return it.", "output": "I understand you'd like to return the Laptop. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not working. I would like to repair it.", "output": "Let's begin the repair process for your Laptop. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's missing parts. I would like to exchange it.", "output": "To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's defective. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Smartwatch. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's doesn't match description. I would like to replace it.", "output": "I'm sorry about your Camera. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not as expected. I would like to return it.", "output": "I understand you'd like to return the Tablet. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not as expected. I would like to repair it.", "output": "Let's begin the repair process for your Tablet. Please send your order number and details of the not as expected."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's doesn't match description. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's missing parts. I would like to exchange it.", "output": "To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's missing parts. I would like to replace it.", "output": "I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's missing parts. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Speaker. Please send your order number and details of the missing parts."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's damaged. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Gaming Console. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's wrong color. I would like to replace it.", "output": "I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to replace it.", "output": "I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Tablet. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's not as expected. I would like to return it.", "output": "I understand you'd like to return the TV. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's wrong color. I would like to exchange it.", "output": "To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's wrong color. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your TV. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's broken screen. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Speaker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's not working. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Camera. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's wrong color. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's defective. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your TV. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's wrong color. I would like to refund it.", "output": "I can help with a refund for your Laptop. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's damaged. I would like to return it.", "output": "I understand you'd like to return the Gaming Console. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's defective. I would like to replace it.", "output": "I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's broken screen. I would like to replace it.", "output": "I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Smartphone. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's damaged. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Speaker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's not as expected. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your TV. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not as expected. I would like to refund it.", "output": "I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your Headphones. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Tablet. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's defective. I would like to exchange it.", "output": "To exchange your Smartphone, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to exchange it.", "output": "To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's not as expected. I would like to return it.", "output": "I understand you'd like to return the Camera. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's doesn't match description. I would like to refund it.", "output": "I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's wrong color. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Speaker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's missing parts. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Fitness Tracker. Please send your order number and details of the missing parts."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's not as expected. I would like to repair it.", "output": "Let's begin the repair process for your Gaming Console. Please send your order number and details of the not as expected."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's damaged. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Speaker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's doesn't match description. I would like to exchange it.", "output": "To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's wrong color. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Camera. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's broken screen. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your Headphones, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not as expected. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's missing parts. I would like to replace it.", "output": "I'm sorry about your Camera. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's doesn't match description. I would like to exchange it.", "output": "To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Tablet. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's wrong color. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's wrong color. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Gaming Console. Please send your order number and details of the wrong color."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's missing parts. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Tablet. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your TV. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's broken screen. I would like to replace it.", "output": "I'm sorry about your Fitness Tracker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's damaged. I would like to exchange it.", "output": "To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's wrong color. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Fitness Tracker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's doesn't match description. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Headphones. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's broken screen. I would like to exchange it.", "output": "To exchange your Gaming Console, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's missing parts. I would like to refund it.", "output": "I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's wrong color. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Smartwatch. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not working. I would like to return it.", "output": "I understand you'd like to return the Laptop. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Speaker. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's not as expected. I would like to replace it.", "output": "I'm sorry about your Camera. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's missing parts. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your TV, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's damaged. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Camera. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not working. I would like to repair it.", "output": "Let's begin the repair process for your Laptop. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not working. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Fitness Tracker. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's doesn't match description. I would like to exchange it.", "output": "To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's missing parts. I would like to refund it.", "output": "I can help with a refund for your Headphones. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's broken screen. I would like to replace it.", "output": "I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not working. I would like to return it.", "output": "I understand you'd like to return the Smartwatch. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not working. I would like to exchange it.", "output": "To exchange your Speaker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's broken screen. I would like to replace it.", "output": "I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's broken screen. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Headphones. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's defective. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Smartphone. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's doesn't match description. I would like to exchange it.", "output": "To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's defective. I would like to refund it.", "output": "I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not as expected. I would like to replace it.", "output": "I'm sorry about your Smartwatch. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not as expected. I would like to exchange it.", "output": "To exchange your Speaker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's damaged. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's damaged. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Gaming Console. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's damaged. I would like to repair it.", "output": "Let's begin the repair process for your TV. Please send your order number and details of the damaged."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's damaged. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's broken screen. I would like to refund it.", "output": "I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not working. I would like to repair it.", "output": "Let's begin the repair process for your Laptop. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your Smartwatch. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's doesn't match description. I would like to replace it.", "output": "I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's doesn't match description. I would like to replace it.", "output": "I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's not working. I would like to replace it.", "output": "I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's missing parts. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Gaming Console. Please send your order number and details of the missing parts."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's doesn't match description. I would like to replace it.", "output": "I'm sorry about your Camera. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's damaged. I would like to repair it.", "output": "Let's begin the repair process for your Headphones. Please send your order number and details of the damaged."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's defective. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not working. I would like to exchange it.", "output": "To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not working. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Fitness Tracker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your TV. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's defective. I would like to replace it.", "output": "I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to refund it.", "output": "I can help with a refund for your Smartphone. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's missing parts. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's defective. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Smartwatch. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's defective. I would like to replace it.", "output": "I'm sorry about your Laptop. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's broken screen. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Fitness Tracker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Tablet. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's missing parts. I would like to replace it.", "output": "I'm sorry about your Laptop. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's wrong color. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's wrong color. I would like to refund it.", "output": "I can help with a refund for your Headphones. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's defective. I would like to repair it.", "output": "Let's begin the repair process for your Laptop. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not as expected. I would like to return it.", "output": "I understand you'd like to return the Tablet. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's missing parts. I would like to return it.", "output": "I understand you'd like to return the Speaker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's damaged. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Speaker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's damaged. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Laptop, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not working. I would like to refund it.", "output": "I can help with a refund for your Laptop. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's not working. I would like to refund it.", "output": "I can help with a refund for your Gaming Console. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's defective. I would like to replace it.", "output": "I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's defective. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Laptop. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not working. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Smartwatch. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's doesn't match description. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Speaker. Please send your order number and details of the doesn't match description."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not working. I would like to repair it.", "output": "Let's begin the repair process for your Headphones. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's defective. I would like to refund it.", "output": "I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's broken screen. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's wrong color. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's doesn't match description. I would like to exchange it.", "output": "To exchange your TV, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's broken screen. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Camera. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's missing parts. I would like to return it.", "output": "I apologize for the inconvenience. I understand you'd like to return the Headphones. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's missing parts. I would like to refund it.", "output": "I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's wrong color. I would like to return it.", "output": "I understand you'd like to return the Speaker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's missing parts. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's wrong color. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Camera. Please send your order number and details of the wrong color."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not working. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's doesn't match description. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not as expected. I would like to refund it.", "output": "I can help with a refund for your Headphones. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's damaged. I would like to exchange it.", "output": "To exchange your Speaker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's doesn't match description. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the TV. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's doesn't match description. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's defective. I would like to replace it.", "output": "I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's wrong color. I would like to exchange it.", "output": "To exchange your Headphones, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's defective. I would like to replace it.", "output": "I'm sorry about your Gaming Console. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's damaged. I would like to return it.", "output": "I understand you'd like to return the Fitness Tracker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's damaged. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the TV. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's not working. I would like to repair it.", "output": "Let's begin the repair process for your TV. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not as expected. I would like to replace it.", "output": "I'm sorry about your Fitness Tracker. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's missing parts. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not working. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's defective. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's defective. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Gaming Console. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's missing parts. I would like to repair it.", "output": "Let's begin the repair process for your Camera. Please send your order number and details of the missing parts."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not as expected. I would like to refund it.", "output": "I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's damaged. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Speaker. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not working. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Smartwatch. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's missing parts. I would like to exchange it.", "output": "To exchange your Fitness Tracker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's missing parts. I would like to return it.", "output": "I understand you'd like to return the Camera. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not as expected. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not as expected. I would like to replace it.", "output": "I'm sorry about your Laptop. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's defective. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your TV. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's damaged. I would like to repair it.", "output": "Let's begin the repair process for your Gaming Console. Please send your order number and details of the damaged."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's wrong color. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your Gaming Console, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to refund it.", "output": "I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's not as expected. I would like to return it.", "output": "I understand you'd like to return the Camera. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's missing parts. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Smartwatch. Please send your order number and details of the missing parts."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's missing parts. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Gaming Console. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's broken screen. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Camera. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's missing parts. I would like to return it.", "output": "I understand you'd like to return the TV. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's broken screen. I would like to refund it.", "output": "I can help with a refund for your Fitness Tracker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's broken screen. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Camera. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's doesn't match description. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Fitness Tracker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's defective. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's wrong color. I would like to replace it.", "output": "I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's not working. I would like to exchange it.", "output": "To exchange your Smartphone, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's broken screen. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Headphones, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's broken screen. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Smartphone. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to return it.", "output": "I understand you'd like to return the Tablet. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's doesn't match description. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Camera. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's damaged. I would like to refund it.", "output": "I can help with a refund for your Gaming Console. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's not working. I would like to exchange it.", "output": "To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not working. I would like to return it.", "output": "I understand you'd like to return the Headphones. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's damaged. I would like to exchange it.", "output": "To exchange your Speaker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's not working. I would like to refund it.", "output": "I apologize for the inconvenience. I can help with a refund for your Tablet. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's damaged. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your TV. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's broken screen. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not working. I would like to replace it.", "output": "I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's not as expected. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Laptop. Please send your order number and details of the not as expected."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's not working. I would like to return it.", "output": "I understand you'd like to return the Gaming Console. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's not as expected. I would like to replace it.", "output": "I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's doesn't match description. I would like to return it.", "output": "Let me clarify the process. I understand you'd like to return the Laptop. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's wrong color. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not as expected. I would like to exchange it.", "output": "To exchange your Speaker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's doesn't match description. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Gaming Console, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's defective. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Headphones. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's missing parts. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Headphones. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to refund it.", "output": "I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's broken screen. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Tablet. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's doesn't match description. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Smartphone. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's doesn't match description. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Smartwatch. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's defective. I would like to exchange it.", "output": "I apologize for the inconvenience. To exchange your Camera, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's defective. I would like to return it.", "output": "I understand you'd like to return the Speaker. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartphone but it's broken screen. I would like to repair it.", "output": "Let's begin the repair process for your Smartphone. Please send your order number and details of the broken screen."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's defective. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your TV. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's wrong color. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Laptop. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's defective. I would like to return it.", "output": "I understand you'd like to return the Camera. Please provide your order number."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my TV but it's defective. I would like to repair it.", "output": "Let's begin the repair process for your TV. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Headphones but it's not working. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Headphones. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's not working. I would like to repair it.", "output": "Let me clarify the process. Let's begin the repair process for your Gaming Console. Please send your order number and details of the not working."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's doesn't match description. I would like to replace it.", "output": "Let me clarify the process. I'm sorry about your Tablet. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Laptop but it's broken screen. I would like to replace it.", "output": "I apologize for the inconvenience. I'm sorry about your Laptop. Let's arrange a replacement. Please share your order number and the issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's wrong color. I would like to exchange it.", "output": "Let me clarify the process. To exchange your Tablet, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Gaming Console but it's missing parts. I would like to exchange it.", "output": "To exchange your Gaming Console, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Camera but it's wrong color. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Camera. Please send your order number and details of the wrong color."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's defective. I would like to repair it.", "output": "I apologize for the inconvenience. Let's begin the repair process for your Fitness Tracker. Please send your order number and details of the defective."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Fitness Tracker but it's not working. I would like to exchange it.", "output": "To exchange your Fitness Tracker, please provide your order number and the product you'd prefer."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Speaker but it's not working. I would like to refund it.", "output": "Let me clarify the process. I can help with a refund for your Speaker. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Tablet but it's damaged. I would like to refund it.", "output": "I can help with a refund for your Tablet. Please share your order details and issue."}
+{"system": "You are a helpful retail customer service representative. Provide clear, concise, and professional responses.", "input": "I received my Smartwatch but it's not working. I would like to exchange it.", "output": "To exchange your Smartwatch, please provide your order number and the product you'd prefer."}
