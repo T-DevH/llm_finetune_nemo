@@ -169,6 +169,59 @@ Requirements:
 pip install tensorboard matplotlib
 ```
 
+## Deployment
+
+The project includes a deployment setup for serving the fine-tuned model via a FastAPI application. The deployment is containerized using Docker for easy deployment and scaling.
+
+### Prerequisites
+
+- Docker installed
+- NVIDIA Container Toolkit installed
+- NVIDIA GPU with CUDA support
+
+### Building the Container
+
+Navigate to the deployment directory and build the container:
+
+```bash
+cd src/deployment
+docker build -t nemo-nim-app .
+```
+
+### Running the Container
+
+Run the container with GPU support and expose the FastAPI port:
+
+```bash
+docker run --gpus all -p 8000:8000 nemo-nim-app
+```
+
+The API will be available at `http://localhost:8000`. You can access the API documentation at `http://localhost:8000/docs`.
+
+### API Endpoints
+
+- `POST /generate`: Generate text using the fine-tuned model
+  - Input: JSON with `prompt` and optional parameters
+  - Output: Generated text response
+
+- `GET /health`: Health check endpoint
+  - Returns service status and model information
+
+### Environment Variables
+
+The following environment variables can be configured:
+
+- `CUDA_VISIBLE_DEVICES`: Specify which GPU to use (default: 0)
+- `PYTHONPATH`: Python path for the application (default: /app)
+
+### Model Directory
+
+The container expects the fine-tuned model to be mounted at `/app/model`. You can mount your model directory when running the container:
+
+```bash
+docker run --gpus all -p 8000:8000 -v /path/to/your/model:/app/model nemo-nim-app
+```
+
 ## Getting Started
 
 1. Clone the repository:
@@ -300,117 +353,6 @@ Training results and model checkpoints are saved in the `results/` directory. Th
 - Best model checkpoint based on validation loss
 - Final model checkpoint
 - Training logs and metrics
-
-## Deployment
-
-The project includes a FastAPI-based deployment setup for serving the fine-tuned model. The deployment configuration uses Docker and supports GPU acceleration.
-
-### Prerequisites
-
-- Docker and NVIDIA Container Toolkit installed
-- NVIDIA GPU with compatible drivers (tested with driver version 550.144.03)
-- At least 16GB of GPU memory recommended
-- Docker Compose installed
-
-### Deployment Structure
-
-```
-src/deployment/
-├── app/                    # Application code
-│   ├── main.py            # FastAPI application
-│   ├── model.py           # Model loading and inference
-│   └── config.py          # Configuration settings
-├── Dockerfile             # Container definition
-├── docker-compose.yml     # Container orchestration
-└── requirements.txt       # Python dependencies
-```
-
-### Configuration
-
-The deployment uses the following key configurations:
-
-1. **Model Path**: The fine-tuned model is mounted from:
-   ```
-   results/megatron_gpt_peft_adapter_tuning/checkpoints/megatron_gpt_peft_adapter_tuning.nemo
-   ```
-
-2. **API Endpoints**:
-   - Health Check: `GET /healthcheck`
-   - Text Generation: `POST /generate`
-     ```json
-     {
-       "input_text": "Your input text here"
-     }
-     ```
-
-3. **Generation Parameters**:
-   - Max length: 512 tokens
-   - Temperature: 0.7
-   - Top-p: 0.9
-   - Repetition penalty: 1.2
-
-### Deployment Steps
-
-1. Navigate to the deployment directory:
-   ```bash
-   cd src/deployment
-   ```
-
-2. Build and start the container:
-   ```bash
-   docker-compose up --build
-   ```
-
-3. The API will be available at:
-   ```
-   http://localhost:8000
-   ```
-
-### Testing the Deployment
-
-1. Health Check:
-   ```bash
-   curl http://localhost:8000/healthcheck
-   ```
-
-2. Generate Text:
-   ```bash
-   curl -X POST http://localhost:8000/generate \
-     -H "Content-Type: application/json" \
-     -d '{"input_text": "Your input text here"}'
-   ```
-
-### Resource Requirements
-
-- GPU Memory: Minimum 16GB recommended
-- System Memory: Minimum 32GB recommended
-- Storage: At least 10GB free space for model and container
-
-### Troubleshooting
-
-Common issues and solutions:
-1. Memory issues: 
-   - Adjust `micro_batch_size` in the config file
-   - Enable gradient checkpointing
-   - Reduce sequence length if needed
-2. Training instability: 
-   - Adjust learning rate or warmup steps
-   - Enable dropout for regularization
-   - Increase batch size if possible
-3. Container errors: 
-   - Verify NGC authentication and API key
-   - Check Docker and NVIDIA Container Toolkit installation
-4. Data format errors: 
-   - Ensure JSONL files follow the required format
-   - Validate data using the data generation utilities
-5. Model extraction issues:
-   - Check NGC API key and authentication
-   - Verify sufficient disk space
-   - Ensure Python environment has required dependencies
-6. Performance issues:
-   - Increase number of workers for data loading
-   - Enable prefetching
-   - Optimize memmap workers
 
 ## License
 

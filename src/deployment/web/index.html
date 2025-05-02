@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LLM Inference API</title>
+  <title>NeMo LLM NIM</title>
 </head>
 <body>
-  <h1>LLM Inference API</h1>
-  <p>Use the /generate endpoint to send your queries.</p>
+  <h2>Test NeMo NIM</h2>
+  <textarea id="prompt" rows="4" cols="50" placeholder="Enter your prompt..."></textarea><br>
+  <button onclick="sendPrompt()">Generate</button>
+  <h3>Response:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    async function sendPrompt() {
+      const prompt = document.getElementById("prompt").value;
+      const response = await fetch("/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await response.json();
+      document.getElementById("output").textContent = data.response;
+    }
+  </script>
 </body>
 </html>

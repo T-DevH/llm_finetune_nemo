@@ -1,27 +1,19 @@
-import logging
-from fastapi import FastAPI
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
-logger = logging.getLogger(__name__)
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from app.model import load_model, generate_response
-from app.config import Settings
-from pydantic import BaseModel
+from app.schema import PromptRequest, PromptResponse
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
-@app.get("/healthcheck")
-def healthcheck():
-    return {"status": "healthy"}
-settings = Settings()
-model = load_model(settings.MODEL_PATH)
+model = load_model()
 
-class Query(BaseModel):
-    input_text: str
+@app.post("/generate", response_model=PromptResponse)
+def generate_text(request: PromptRequest):
+    return generate_response(request.prompt, model)
 
-@app.post("/generate")
-def generate(query: Query):
-    output = generate_response(model, query.input_text)
-    return {"response": output}
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    with open("app/static/index.html") as f:
+        return HTMLResponse(content=f.read())
