@@ -1,0 +1,14 @@
+name: "nemo-megatron-nim"
+version: "1.0"
+framework: "nemo"
+description: "NIM wrapper for NeMo Megatron GPT Model"
+endpoints:
+  - path: /generate
+    method: POST
+    request:
+      prompt: string
+    response:
+      response: string
+compute:
+  gpu_required: true
+  memory: 16GB
