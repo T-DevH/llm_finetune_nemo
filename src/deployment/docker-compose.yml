@@ -7,9 +7,24 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ../../results:/app/model
+      - /home/tarik-devh/Projects/llm_finetune_nemo/results/megatron_gpt_peft_adapter_tuning/checkpoints:/app/model
+    environment:
+      - MODEL_PATH=/app/model/megatron_gpt_peft_adapter_tuning.nemo
+      - CUDA_VISIBLE_DEVICES=0
     deploy:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    shm_size: '2gb'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack:
+        soft: 67108864
+        hard: 67108864
+    ipc: host

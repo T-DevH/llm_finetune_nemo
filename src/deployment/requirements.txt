@@ -1,4 +1,10 @@
 fastapi==0.100.0
 uvicorn==0.22.0
-torch
-nemo_toolkit[all]
+pydantic==2.5.2
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+numpy>=1.20.0
+torch>=2.0.0
+nemo_toolkit[all]>=1.20.0
+tensorboard>=2.13.0
+python-dotenv==1.0.0
