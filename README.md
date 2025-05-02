@@ -169,6 +169,13 @@ Requirements:
 pip install tensorboard matplotlib
 ```
 
+## Results and Checkpoints
+
+Training results and model checkpoints are saved in the `results/` directory. The system saves:
+- Best model checkpoint based on validation loss
+- Final model checkpoint
+- Training logs and metrics
+
 ## Deployment
 
 The project includes a deployment setup for serving the fine-tuned model via a FastAPI application. The deployment is containerized using Docker for easy deployment and scaling.
@@ -221,138 +228,6 @@ The container expects the fine-tuned model to be mounted at `/app/model`. You ca
 ```bash
 docker run --gpus all -p 8000:8000 -v /path/to/your/model:/app/model nemo-nim-app
 ```
-
-## Getting Started
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd llm_finetune_nemo
-```
-
-2. Make the scripts executable:
-```bash
-chmod +x scripts/*.sh
-```
-
-3. Download and extract the model:
-
-Before starting fine-tuning, you need to download and extract the base model.
-
-I provide a convenient script to handle this automatically.
-
-### Steps:
-
-1. Make the script executable:
-```bash
-./scripts/extract_nemo_model.sh
-```
-This will:
-   - Create the models/ directory if it doesn't exist.
-   - Download the .nemo model file if it's missing.
-   - Extract the model into models/<model_name>/.
-   - Skip downloading and extraction if the model already exists and is ready.
-
-### Output Structure:
-
-```
-.
-models/
- ├── megatron_gpt_345m.nemo
- └── megatron_gpt_345m/
-      ├── model_config.yaml
-      ├── model_weights/
-      └── tokenizer/
-```
-
-4. Prepare your data:
-   - Place training data in `data/train/data.jsonl`
-   - Place validation data in `data/val/data.jsonl`
-   - Place test data in `data/test/data.jsonl`
-
-5. Configure training parameters in `configs/training_config.yaml`:
-   - Adjust parameters based on your hardware and requirements
-   - See the Parameter Recommendations section below
-
-6. Run the container and start training:
-```bash
-./scripts/run_nemo_container.sh
-```
-
-The script will:
-- Pull the NeMo container (nvcr.io/nvidia/nemo:25.04.nemotron-h)
-- Verify the workspace structure
-- Start the training process with the specified configuration
-
-## Parameter Recommendations
-
-| Setting | Current | Recommended | Why |
-|---------|---------|-------------|-----|
-| train_ds.num_workers | 0 | 8 or 16 | Faster dataloading |
-| validation_ds.num_workers | 0 | 8 or 16 | Faster validation |
-| train_ds.prefetch_factor | - | 2 | Smoother batch pipeline |
-| validation_ds.prefetch_factor | - | 2 | Smoother val batches |
-| warmup_steps | 50 | 200 | Better learning rate ramp |
-| hidden_dropout | 0.0 | 0.1 | Slight regularization |
-| attention_dropout | 0.0 | 0.1 | Slight regularization |
-| ffn_dropout | 0.0 | 0.1 | Slight regularization |
-| early_stopping.patience | 10 | 20 | Avoid premature stopping |
-| memmap_workers | 2 | 4 (optional) | Faster data indexing |
-
-## Training Configuration
-
-The training configuration is stored in `configs/training_config.yaml`. Key parameters include:
-
-### Model Configuration
-- Base model: Megatron GPT 345M
-- Sequence length: 2048 tokens
-- Batch size: 128 (global), 4 (micro)
-- Mixed precision: bf16
-- PEFT (LoRA) configuration:
-  - Target modules: attention_qkv
-  - Adapter dimension: 32
-  - Alpha: 32
-  - Dropout: 0.0
-
-### Training Parameters
-- Maximum steps: 20,000
-- Validation interval: Every 200 steps
-- Learning rate: 0.0001
-- Optimizer: Fused Adam
-- Learning rate scheduler: Cosine Annealing
-- Warmup steps: 50
-- Gradient clipping: 1.0
-
-### Early Stopping
-- Monitor: validation loss
-- Patience: 10
-- Minimum delta: 0.001
-
-## Monitoring Training Progress
-
-1. Make the monitoring script executable:
-```bash
-chmod +x scripts/monitor_training.sh
-```
-
-2. Run the monitoring script:
-```bash
-./scripts/monitor_training.sh
-```
-
-The script displays:
-- Current training step and epoch
-- Training and validation loss
-- Learning rate
-- GPU memory usage
-- Updates every minute
-
-## Results and Checkpoints
-
-Training results and model checkpoints are saved in the `results/` directory. The system saves:
-- Best model checkpoint based on validation loss
-- Final model checkpoint
-- Training logs and metrics
 
 ## License
 
