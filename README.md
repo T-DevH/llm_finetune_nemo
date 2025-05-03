@@ -47,25 +47,24 @@ source nemo_lora/bin/activate
 
 ```
 .
-├── configs/               # Configuration files
-│   └── training_config.yaml  # Main training configuration
-├── data/                 # Training data
-│   ├── train/           # Training data (JSONL format)
-│   ├── val/            # Validation data (JSONL format)
-│   └── test/           # Test data (JSONL format)
-├── models/              # Model files
-│   ├── megatron_gpt_345m.nemo  # Downloaded NEMO model
-│   └── megatron_gpt_345m/      # Extracted model directory
-├── scripts/             # Utility scripts
-│   ├── run_nemo_container.sh  # Main training script
-│   ├── monitor_training.sh    # Training monitoring script
-│   ├── extract_nemo_model.sh  # Model download and extraction script
-│   └── plot_training_loss.py  # Training loss visualization script
-├── src/                 # Source code
-│   ├── data_generation/ # Data generation utilities
-│   └── deployment/     # Deployment scripts
-├── logs/               # Training logs
-└── results/            # Training results and checkpoints
+├── configs/                    # Configuration files
+│   ├── training_config.yaml    # Training configuration
+│   └── model_config.yaml       # Model configuration
+├── data/                       # Training data
+│   └── alpaca_data.json        # Alpaca format dataset
+├── src/
+│   ├── training/              # Training scripts
+│   │   └── train.py           # Main training script
+│   └── deployment/            # Deployment files
+│       ├── app/               # FastAPI application
+│       │   ├── main.py        # API endpoints
+│       │   ├── model.py       # Model interface
+│       │   ├── schema.py      # Data schemas
+│       │   └── static/        # Frontend files
+│       │       └── index.html # Web interface
+│       ├── Dockerfile         # Container definition
+│       └── requirements.txt    # Python dependencies
+└── README.md                  # This file
 ```
 
 ## Data Format
@@ -126,22 +125,46 @@ Usage:
 
 ## Training
 
-The training process uses LoRA (Low-Rank Adaptation) for efficient fine-tuning:
+1. Prepare your training data in Alpaca format (JSON):
+```json
+[
+    {
+        "instruction": "What is the capital of France?",
+        "input": "",
+        "output": "The capital of France is Paris."
+    }
+]
+```
 
-- Adapter dimension: 32
-- Alpha: 32
-- Target modules: attention_qkv
-- Training settings:
-  - Devices: 1
-  - Precision: bf16-mixed
-  - Max steps: 20000
-  - Validation interval: 200
-  - Global batch size: 128
-  - Micro batch size: 4
+2. Update the training configuration in `configs/training_config.yaml`:
+```yaml
+model:
+  name: "gpt2"
+  pretrained_model_name: "gpt2"
+  adapter_tuning:
+    enabled: true
+    adapter_dim: 8
+    adapter_dropout: 0.1
 
-Usage:
+trainer:
+  max_steps: 1000
+  val_check_interval: 100
+  gradient_clip_val: 1.0
+  precision: 16
+  accelerator: "gpu"
+  devices: 1
+
+data:
+  train_file: "data/alpaca_data.json"
+  validation_split: 0.1
+  max_seq_length: 512
+  batch_size: 4
+  num_workers: 4
+```
+
+3. Start training:
 ```bash
-./scripts/run_nemo_container.sh
+python src/training/train.py
 ```
 
 ## Training Progress Visualization
@@ -178,56 +201,102 @@ Training results and model checkpoints are saved in the `results/` directory. Th
 
 ## Deployment
 
-The project includes a deployment setup for serving the fine-tuned model via a FastAPI application. The deployment is containerized using Docker for easy deployment and scaling.
+### Method 1: Direct NeMo Deployment
 
-### Prerequisites
-
-- Docker installed
-- NVIDIA Container Toolkit installed
-- NVIDIA GPU with CUDA support
-
-### Building the Container
-
-Navigate to the deployment directory and build the container:
-
+1. Build the Docker container:
 ```bash
 cd src/deployment
-docker build -t nemo-nim-app .
+docker build -t nemo-finetune .
 ```
 
-### Running the Container
+2. Run the container:
+```bash
+docker run -it --gpus all \
+  -v $(pwd)/model:/app/model \
+  -p 8000:8000 \
+  nemo-finetune
+```
 
-Run the container with GPU support and expose the FastAPI port:
+3. Access the API:
+- Web Interface: http://localhost:8000
+- API Endpoint: http://localhost:8000/generate
+- Health Check: http://localhost:8000/health
+
+### Method 2: TensorRT-LLM with NIM (Recommended)
+
+This method provides better inference performance using TensorRT-LLM and NVIDIA Inference Manager (NIM).
+
+1. Export the model to TensorRT-LLM format:
+```bash
+cd src/deployment
+./export_model.sh <config_path> <checkpoint_path> <export_dir>
+```
+
+2. Start the NIM container for model serving:
+```bash
+docker run -it --gpus all \
+  -v $(pwd)/exported_model:/model \
+  -p 8001:8000 \
+  nvcr.io/nvidia/nim/megatron-gpt:24.03 \
+  bash -c "NIM_API_MODEL_PATH=/model NIM_API_PORT=8000 start-nim"
+```
+
+3. Start the FastAPI application:
+```bash
+docker run -it --gpus all \
+  -p 8000:8000 \
+  -e NIM_API_ENDPOINT=http://host.docker.internal:8001/generate \
+  nemo-finetune
+```
+
+4. Access the API:
+- Web Interface: http://localhost:8000
+- API Endpoint: http://localhost:8000/generate
+- Health Check: http://localhost:8000/health
+
+## API Usage
+
+### Generate Text
 
 ```bash
-docker run --gpus all -p 8000:8000 nemo-nim-app
+curl -X POST http://localhost:8000/generate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "What is the capital of France?",
+    "max_tokens": 100,
+    "temperature": 0.7
+  }'
 ```
 
-The API will be available at `http://localhost:8000`. You can access the API documentation at `http://localhost:8000/docs`.
-
-### API Endpoints
-
-- `POST /generate`: Generate text using the fine-tuned model
-  - Input: JSON with `prompt` and optional parameters
-  - Output: Generated text response
-
-- `GET /health`: Health check endpoint
-  - Returns service status and model information
-
-### Environment Variables
-
-The following environment variables can be configured:
-
-- `CUDA_VISIBLE_DEVICES`: Specify which GPU to use (default: 0)
-- `PYTHONPATH`: Python path for the application (default: /app)
-
-### Model Directory
-
-The container expects the fine-tuned model to be mounted at `/app/model`. You can mount your model directory when running the container:
-
-```bash
-docker run --gpus all -p 8000:8000 -v /path/to/your/model:/app/model nemo-nim-app
+Response:
+```json
+{
+  "response": "The capital of France is Paris."
+}
 ```
+
+## Environment Variables
+
+- `CUDA_VISIBLE_DEVICES`: GPU device to use (default: 0)
+- `SHMEM_SIZE`: Shared memory size (default: 8G)
+- `NIM_API_ENDPOINT`: NIM API endpoint URL (default: http://localhost:8001/generate)
+
+## Troubleshooting
+
+1. CUDA Out of Memory:
+   - Reduce batch size in training config
+   - Use gradient checkpointing
+   - Enable 8-bit quantization
+
+2. Slow Inference:
+   - Use TensorRT-LLM deployment method
+   - Enable model caching
+   - Optimize batch size
+
+3. Container Issues:
+   - Ensure NVIDIA Container Toolkit is installed
+   - Check GPU visibility in container
+   - Verify shared memory settings
 
 ## License
 
@@ -236,7 +305,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 - NVIDIA NeMo team for the framework
-- NVIDIA NIM team for the optimized models
+- Alpaca team for the dataset format
+- Hugging Face for the base models
 
 ## Contributing
 
