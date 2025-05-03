@@ -229,7 +229,10 @@ This method provides better inference performance using TensorRT-LLM and NVIDIA 
 1. Export the model to TensorRT-LLM format:
 ```bash
 cd src/deployment
-./export_model.sh <config_path> <checkpoint_path> <export_dir>
+./export_model.sh \
+    configs/model_config.yaml \
+    results/megatron_gpt_peft_adapter_tuning/checkpoints/megatron_gpt_peft_adapter_tuning.nemo \
+    exported_model
 ```
 
 2. Start the NIM container for model serving:
