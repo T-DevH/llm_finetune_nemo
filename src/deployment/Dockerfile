@@ -23,15 +23,15 @@ RUN pip uninstall -y torch torchaudio torchvision fastapi pydantic transformers 
 
 # Install specific versions of core dependencies
 RUN pip install --no-cache-dir \
-    torch==2.2.0 \
-    torchaudio==2.2.0 \
-    torchvision==0.17.0 \
-    fastapi==0.115.4 \
-    pydantic>=2.9.1 \
-    transformers>=4.47.0,<4.48.0 \
-    numba>=0.59.1,<0.61.0a0 \
-    urllib3>=1.21.1,<1.27 \
-    pillow==10.3.0 --force-reinstall
+    "torch==2.2.0" \
+    "torchaudio==2.2.0" \
+    "torchvision==0.17.0" \
+    "fastapi==0.115.4" \
+    "pydantic>=2.9.1" \
+    "transformers>=4.47.0,<4.48.0" \
+    "numba>=0.59.1,<0.61.0a0" \
+    "urllib3>=1.21.1,<1.27" \
+    "pillow==10.3.0" --force-reinstall
 
 # Install Transformer Engine from source
 RUN pip install --no-cache-dir git+https://github.com/NVIDIA/TransformerEngine.git@v0.13 --force-reinstall
