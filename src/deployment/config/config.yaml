@@ -12,3 +12,37 @@ endpoints:
 compute:
   gpu_required: true
   memory: 16GB
+
+model:
+  model:
+    num_layers: 24
+    hidden_size: 2048
+    ffn_hidden_size: 8192
+    num_attention_heads: 16
+    max_position_embeddings: 2048
+    hidden_dropout: 0.1
+    attention_dropout: 0.1
+    apply_query_key_layer_scaling: true
+    normalization: "layernorm"
+    kv_channels: null
+    layernorm_epsilon: 1e-5
+    bias: true
+    use_rotary_position_embeddings: true
+    precision: 16
+    fp16: true
+    bf16: false
+
+trainer:
+  max_steps: 1000
+  val_check_interval: 100
+  gradient_clip_val: 1.0
+  precision: 16
+  accelerator: "gpu"
+  devices: 1
+
+data:
+  train_file: "data/alpaca_data.json"
+  validation_split: 0.1
+  max_seq_length: 512
+  batch_size: 4
+  num_workers: 4

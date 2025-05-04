@@ -1,10 +1,10 @@
-# Use the official NeMo container with preinstalled torch stack and NeMo 2.2.1
+# Use the official NeMo container with preinstalled stack
 FROM nvcr.io/nvidia/nemo:25.04.nemotron-h
 
 # Set working directory
 WORKDIR /app
 
-# Install CUDA toolkit headers if needed for nvcc or custom ops
+# Install CUDA headers if needed (e.g. for nvcc or custom ops)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     wget \
@@ -18,11 +18,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     rm cuda-keyring_1.1-1_all.deb
 
-# First, uninstall conflicting packages
-RUN pip uninstall -y torch torchaudio torchvision fastapi pydantic transformers numba urllib3
+# Uninstall conflicting preinstalled packages
+RUN pip uninstall -y torch torchaudio torchvision fastapi pydantic transformers numba urllib3 pytorch-lightning lightning
 
-# Install specific versions of core dependencies
-RUN pip install --no-cache-dir \
+# Reinstall NeMo-compatible core libraries
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --force-reinstall \
     "torch==2.2.0" \
     "torchaudio==2.2.0" \
     "torchvision==0.17.0" \
@@ -33,25 +34,25 @@ RUN pip install --no-cache-dir \
     "urllib3>=1.21.1,<1.27" \
     "pillow==10.3.0" \
     "lightning>=2.2.0" \
-    "torchmetrics>=1.3.0" --force-reinstall
+    "torchmetrics>=1.3.0"
 
-# Install Transformer Engine from source
+# Install NVIDIA Transformer Engine from source (for fp8 support)
 RUN pip install --no-cache-dir git+https://github.com/NVIDIA/TransformerEngine.git@v0.13 --force-reinstall
 
-# Install additional Python dependencies
+# Install additional Python dependencies from your project
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY . /app
+# Copy all source files into the container
+COPY . .
 
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV CUDA_VISIBLE_DEVICES=0
 ENV SHMEM_SIZE=8G
 
-# Expose FastAPI port
+# Expose FastAPI port (optional for serving)
 EXPOSE 8000
 
-# Launch the FastAPI app with increased workers and timeout
+# Default entrypoint (can be overridden by your shell script)
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--timeout-keep-alive", "120"]
