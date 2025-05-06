@@ -126,27 +126,82 @@ python scripts/plot_training_loss.py
 
 ## Model Export and Deployment
 
-### 1. Export Model to TensorRT-LLM
+### 1. Setup Deployment Environment
 
-After training, export your model to TensorRT-LLM format:
+The deployment setup is located in `src/deployment/`:
+
+```
+src/deployment/
+├── app/                # Application code
+│   ├── export_model.py # Model export script
+│   └── serve.py       # FastAPI server
+├── config/            # Deployment configuration
+│   └── config.yaml    # Server and model configuration
+├── start_nim.sh       # Script to start NIM server
+└── test_server.sh     # Script to test the server
+```
+
+### 2. Start the Server
+
+To start the server with your fine-tuned model:
 
 ```bash
 cd src/deployment
-./start_nim.sh exported_model
+./start_nim.sh
 ```
 
 This script:
-- Uses the NeMo container to load your trained model
-- Exports it to TensorRT-LLM format
-- The exported model will be in the specified directory
+- Creates necessary directories for models and LoRA adapters
+- Copies your LoRA adapter to the correct location
+- Starts the FastAPI server with GPU support
+- The server will be available at `http://localhost:8000`
 
-### 2. Model Serving
+### 3. Test the Server
 
-The exported model can be served using FastAPI:
+To test if the server is working correctly:
 
 ```bash
-python src/deployment/app/server.py
+cd src/deployment
+./test_server.sh
 ```
+
+This will:
+1. Check server health (`/health` endpoint)
+2. Test the base model generation
+3. Test the LoRA model generation
+
+Example test output:
+```json
+// Health check
+{"status":"ok"}
+
+// Base model test
+{
+  "text": "Mock response for: This is a test of the Megatron GPT model:",
+  "model_used": "megatron_gpt_345m"
+}
+
+// LoRA model test
+{
+  "text": "Mock response for: This is a test of the Megatron GPT model with LoRA:",
+  "model_used": "megatron_gpt_345m_lora"
+}
+```
+
+### 4. API Endpoints
+
+The server provides the following endpoints:
+
+- `GET /health`: Check server health
+- `POST /generate`: Generate text
+  ```json
+  {
+    "prompt": "Your prompt here",
+    "max_tokens": 50,
+    "temperature": 0.7,
+    "use_lora": true  // Set to true to use LoRA model
+  }
+  ```
 
 ## Configuration Details
 
