@@ -1,12 +1,19 @@
 # LLM Fine-Tuning with NVIDIA NeMo and TensorRT-LLM
 
-This project demonstrates how to fine-tune a NeMo model using PEFT adapters and export it to TensorRT-LLM format for optimized inference using NVIDIA Inference Manager (NIM).
+This project demonstrates how to fine-tune a NeMo model using PEFT adapters and export it to TensorRT-LLM format for optimized inference.
+
+## Prerequisites
+
+- NVIDIA GPU with CUDA support
+- Docker with NVIDIA Container Toolkit
+- Python 3.11 (for local development)
+- NVIDIA NGC account (for accessing containers)
 
 ## Project Structure
 
 ```
 .
-├── configs/                      # Training configuration files
+├── configs/                      # Training and deployment configuration files
 ├── data/                        # Training data directory
 ├── models/                      # Model checkpoints and exports
 ├── results/                     # Training results and logs
@@ -17,101 +24,138 @@ This project demonstrates how to fine-tune a NeMo model using PEFT adapters and 
     │   │   └── server.py       # FastAPI server
     │   ├── config/             # Deployment configuration
     │   │   └── config.yaml     # Export configuration
-    │   ├── export_model.sh     # Script to export model to TensorRT-LLM
     │   └── start_nim.sh        # Script to start NIM server
     └── data_generation/        # Data generation scripts
 ```
 
-## Prerequisites
+## Setup
 
-- NVIDIA GPU with CUDA support
-- Docker with NVIDIA Container Toolkit
-- Python 3.11 (for local development)
-
-## Usage
-
-### 1. Export Model to TensorRT-LLM
-
-To export a trained NeMo model to TensorRT-LLM format:
-
+1. Clone the repository:
 ```bash
-cd src/deployment
-./export_model.sh \
-    ../configs/training_config.yaml \
-    ../results/megatron_gpt_peft_adapter_tuning/checkpoints/megatron_gpt_peft_adapter_tuning.nemo \
-    ../exported_model
+git clone [repository-url]
+cd llm_finetune_nemo
 ```
 
-This script uses the official NeMo container (`nvcr.io/nvidia/nemo:25.04.rc2`) to perform the export.
-
-### 2. Start NIM Server
-
-Start the NVIDIA Inference Manager server for optimized model serving:
-
-```bash
-./start_nim.sh exported_model
-```
-
-This will start the NIM container (`nvcr.io/nvidia/nim/megatron-gpt:24.03`) with your exported model.
-
-### 3. Start FastAPI Server
-
-In a separate terminal, start the FastAPI server:
-
-```bash
-docker run -it --gpus all \
-    -p 8000:8000 \
-    -e NIM_API_ENDPOINT=http://host.docker.internal:8001/generate \
-    nvcr.io/nvidia/nemo:25.04.rc2 \
-    python src/deployment/app/server.py
-```
-
-The FastAPI server will communicate with the NIM server for model inference.
-
-## Configuration
-
-The export process uses a configuration file (`configs/training_config.yaml`) that specifies:
-- Model architecture parameters
-- Compute requirements
-- Export settings
-
-Example configuration:
-```yaml
-model:
-  model:
-    num_layers: 12
-    hidden_size: 768
-    num_attention_heads: 12
-    max_position_embeddings: 2048
-    precision: "16-mixed"
-    compute:
-      gpu_required: 1
-      memory: "16GB"
-      precision: "fp16"
-```
-
-## Development
-
-### Local Development
-
-1. Create a virtual environment:
+2. Create a virtual environment:
 ```bash
 python -m venv venv
 source venv/bin/activate
 ```
 
-2. Install dependencies:
+3. Install dependencies:
 ```bash
-pip install -r src/deployment/requirements.txt
+pip install -r requirements.txt
 ```
 
-## Notes
+4. Authenticate with NVIDIA NGC:
+```bash
+docker login nvcr.io
+# Username: $oauthtoken
+# Password: Your NGC API key
+```
 
-- The export process uses the official NeMo container for TensorRT-LLM conversion
-- Model serving is handled by NVIDIA Inference Manager for optimal performance
-- The FastAPI server is lightweight and only handles request routing
-- Make sure your GPU has enough memory for the model export process
-- The exported model will be saved in the specified export directory
+## Training
+
+### 1. Data Preparation
+
+Place your training data in the `data/` directory. The data should be in the following format:
+```json
+{
+    "text": "Your training text here"
+}
+```
+
+### 2. Configuration
+
+Edit `configs/training_config.yaml` to set your training parameters:
+
+```yaml
+model:
+  model_name: "gpt-345m"
+  pretrained: true
+  peft:
+    adapter_tuning:
+      enabled: true
+      adapter_dim: 64
+      type: "parallel_adapter"
+
+trainer:
+  devices: 1
+  accelerator: "gpu"
+  precision: "16-mixed"
+  max_steps: 1000
+  val_check_interval: 100
+
+data:
+  train_file: "data/train.jsonl"
+  val_file: "data/val.jsonl"
+  batch_size: 8
+```
+
+### 3. Training
+
+Start the training:
+
+```bash
+python src/train.py --config configs/training_config.yaml
+```
+
+Training progress and checkpoints will be saved in the `results/` directory.
+
+## Model Export and Deployment
+
+### 1. Export Model to TensorRT-LLM
+
+After training, export your model to TensorRT-LLM format:
+
+```bash
+cd src/deployment
+./start_nim.sh exported_model
+```
+
+This script:
+- Uses the NeMo container to load your trained model
+- Exports it to TensorRT-LLM format
+- The exported model will be in the specified directory
+
+### 2. Model Serving
+
+The exported model can be served using FastAPI:
+
+```bash
+python src/deployment/app/server.py
+```
+
+## Configuration Details
+
+### Training Configuration
+
+The training configuration (`configs/training_config.yaml`) includes:
+- Model architecture parameters
+- PEFT adapter settings
+- Training hyperparameters
+- Data configuration
+
+### Export Configuration
+
+The export configuration (`src/deployment/config/config.yaml`) specifies:
+- Model architecture parameters
+- Compute requirements
+- Export settings
+
+## Development
+
+For local development:
+
+1. Install development dependencies:
+```bash
+pip install -r requirements-dev.txt
+```
+
+2. Set up pre-commit hooks:
+```bash
+pre-commit install
+```
 
 ## Troubleshooting
 
@@ -127,10 +171,17 @@ nvidia-smi
 docker info | grep "Runtimes"
 ```
 
-3. Ensure the model checkpoint exists and is accessible
-4. Check the configuration file for correct model parameters
-5. Verify sufficient disk space for the export process
+3. Training issues:
+   - Check GPU memory usage
+   - Verify data format
+   - Adjust batch size if needed
+
+4. Export issues:
+   - Ensure model checkpoint exists
+   - Check configuration parameters
+   - Verify sufficient disk space
 
 ## License
 
 [Your License Information]
+
