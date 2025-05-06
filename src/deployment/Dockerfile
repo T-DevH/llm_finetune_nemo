@@ -44,8 +44,12 @@ RUN pip uninstall -y \
     lightning \
     numpy
 
+# Update pip and setuptools
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+
 # Install specific versions of packages that are compatible with NeMo 25.04
 RUN pip install --no-cache-dir \
+    "numpy<2.0.0" \
     "torch==2.2.2" \
     "torchaudio==2.2.2" \
     "torchvision==0.17.2" \
@@ -54,11 +58,15 @@ RUN pip install --no-cache-dir \
     "pydantic>=2.9.1,<2.11" \
     "pydantic-settings==2.1.0" \
     "python-multipart==0.0.6" \
-    "numpy>=1.20.0" \
     "tensorboard>=2.13.0" \
     "python-dotenv==1.0.0" \
     "requests" \
-    "lightning>=2.2.0,<2.3.0"
+    "lightning>=2.2.0,<2.3.0" \
+    "omegaconf>=2.3.0"
+
+# Install NVIDIA packages
+RUN pip install --no-cache-dir nvidia-pyindex && \
+    pip install --no-cache-dir nvidia-tensorrt
 
 # Copy source files into the container
 COPY ./src /app/src
@@ -66,5 +74,5 @@ COPY ./src /app/src
 # Set Python path to include the app directory
 ENV PYTHONPATH=/app
 
-# Default command to run the export script
-CMD ["python", "src/deployment/app/export_model.py"]
+# Default command to run the FastAPI server
+CMD ["python", "src/deployment/app/server.py"]
