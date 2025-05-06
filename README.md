@@ -15,8 +15,14 @@ This project demonstrates how to fine-tune a NeMo model using PEFT adapters and 
 .
 ├── configs/                      # Training and deployment configuration files
 ├── data/                        # Training data directory
-├── models/                      # Model checkpoints and exports
+│   ├── train/                   # Training data
+│   └── val/                     # Validation data
+├── models/                      # Pre-trained model checkpoints
 ├── results/                     # Training results and logs
+├── scripts/                     # Utility scripts
+│   ├── run_nemo_container.sh    # Main training script
+│   ├── monitor_training.sh      # Training monitoring
+│   └── plot_training_loss.py    # Loss visualization
 └── src/
     ├── deployment/              # Deployment-related code
     │   ├── app/                # Application code
@@ -36,18 +42,13 @@ git clone [repository-url]
 cd llm_finetune_nemo
 ```
 
-2. Create a virtual environment:
+2. Download the base model:
 ```bash
-python -m venv venv
-source venv/bin/activate
+mkdir -p models
+# Download megatron_gpt_345m.nemo from NGC and place in models/
 ```
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-4. Authenticate with NVIDIA NGC:
+3. Authenticate with NVIDIA NGC:
 ```bash
 docker login nvcr.io
 # Username: $oauthtoken
@@ -58,7 +59,11 @@ docker login nvcr.io
 
 ### 1. Data Preparation
 
-Place your training data in the `data/` directory. The data should be in the following format:
+Place your training data in the appropriate directories:
+- `data/train/data.jsonl` - Training data
+- `data/val/data.jsonl` - Validation data
+
+The data should be in JSONL format with each line containing:
 ```json
 {
     "text": "Your training text here"
@@ -82,25 +87,42 @@ model:
 trainer:
   devices: 1
   accelerator: "gpu"
-  precision: "16-mixed"
+  precision: "bf16-mixed"
   max_steps: 1000
   val_check_interval: 100
 
 data:
-  train_file: "data/train.jsonl"
-  val_file: "data/val.jsonl"
-  batch_size: 8
+  train_ds:
+    file_names: ["data/train/data.jsonl"]
+    concat_sampling_probabilities: [1.0]
+  validation_ds:
+    file_names: ["data/val/data.jsonl"]
+    concat_sampling_probabilities: [1.0]
 ```
 
 ### 3. Training
 
-Start the training:
+Start the training using the NeMo container:
 
 ```bash
-python src/train.py --config configs/training_config.yaml
+bash scripts/run_nemo_container.sh
 ```
 
-Training progress and checkpoints will be saved in the `results/` directory.
+This script:
+- Launches the NeMo container with GPU support
+- Mounts your workspace
+- Runs the Megatron-GPT fine-tuning script with your configuration
+- Saves checkpoints and logs to the `results/` directory
+
+Monitor training progress:
+```bash
+bash scripts/monitor_training.sh
+```
+
+Visualize training loss:
+```bash
+python scripts/plot_training_loss.py
+```
 
 ## Model Export and Deployment
 
