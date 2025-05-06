@@ -125,46 +125,64 @@ Usage:
 
 ## Training
 
-1. Prepare your training data in Alpaca format (JSON):
-```json
-[
-    {
-        "instruction": "What is the capital of France?",
-        "input": "",
-        "output": "The capital of France is Paris."
-    }
-]
+1. Prepare your training data in JSONL format:
+```jsonl
+{"input": "Your input text here", "output": "Your output text here"}
 ```
 
 2. Update the training configuration in `configs/training_config.yaml`:
 ```yaml
-model:
-  name: "gpt2"
-  pretrained_model_name: "gpt2"
-  adapter_tuning:
-    enabled: true
-    adapter_dim: 8
-    adapter_dropout: 0.1
+name: megatron_gpt_peft_full_tuning
 
 trainer:
-  max_steps: 1000
-  val_check_interval: 100
-  gradient_clip_val: 1.0
-  precision: 16
-  accelerator: "gpu"
   devices: 1
+  accelerator: gpu
+  precision: bf16-mixed
+  max_steps: 20000
+  val_check_interval: 200
+  gradient_clip_val: 1.0
 
-data:
-  train_file: "data/alpaca_data.json"
-  validation_split: 0.1
-  max_seq_length: 512
-  batch_size: 4
-  num_workers: 4
+model:
+  global_batch_size: 128
+  micro_batch_size: 4
+  restore_from_path: /workspace/models/megatron_gpt_345m.nemo
+  
+  data:
+    train_ds:
+      file_names: [/workspace/data/train/data.jsonl]
+      max_seq_length: 2048
+      prompt_template: '{input} {output}'
+    
+    validation_ds:
+      file_names: [/workspace/data/val/data.jsonl]
+      max_seq_length: 2048
+      prompt_template: '{input} {output}'
+
+  peft:
+    peft_scheme: lora
+    lora_tuning:
+      variant: nemo
+      target_modules:
+        - attention_qkv
+      adapter_dim: 32
+      alpha: 32
+      adapter_dropout: 0.0
 ```
 
-3. Start training:
+3. Start training using the provided script:
 ```bash
-python src/training/train.py
+./scripts/run_nemo_container.sh
+```
+
+The training script will:
+- Use the NeMo container with all necessary dependencies
+- Mount your workspace to `/workspace` in the container
+- Run the training with the specified configuration
+- Save checkpoints and logs in the `results` directory
+
+You can monitor the training progress using:
+```bash
+./scripts/monitor_training.sh
 ```
 
 ## Training Progress Visualization
