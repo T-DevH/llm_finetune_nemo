@@ -1,30 +1,22 @@
-name: "nemo-megatron-nim"
-version: "1.0"
-framework: "nemo"
-description: "NIM wrapper for NeMo Megatron GPT Model"
-
 model:
-  model:
-    num_layers: 24
-    hidden_size: 2048
-    ffn_hidden_size: 8192
-    num_attention_heads: 16
-    max_position_embeddings: 2048
-    hidden_dropout: 0.1
-    attention_dropout: 0.1
-    apply_query_key_layer_scaling: true
-    normalization: "layernorm"
-    kv_channels: null
-    layernorm_epsilon: 1e-5
-    bias: true
-    use_rotary_position_embeddings: true
-    precision: 16
-    fp16: true
-    bf16: false
+  base_model: /workspace/models/hf_export
+  lora_adapter: /workspace/lora_adapters/megatron_gpt_345m_tuned/megatron_gpt_peft_adapter_tuning.nemo
+  max_batch_size: 8
+  max_sequence_length: 512
+  tensor_parallel_size: 1
+  dtype: "bfloat16"
 
-compute:
-  gpu_required: true
-  memory: 16GB
-  precision: 16
-  accelerator: "gpu"
-  devices: 1
+# Export configuration
+export:
+  dtype: bfloat16
+  max_input_len: 256
+  max_output_len: 256
+  max_batch_size: 8
+  tensor_parallelism: 1
+  use_lora_plugin: true
+  max_lora_rank: 8
+
+server:
+  port: 8000
+  host: "0.0.0.0"
+  max_concurrent_requests: 100
