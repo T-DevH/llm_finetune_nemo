@@ -2,16 +2,6 @@ name: "nemo-megatron-nim"
 version: "1.0"
 framework: "nemo"
 description: "NIM wrapper for NeMo Megatron GPT Model"
-endpoints:
-  - path: /generate
-    method: POST
-    request:
-      prompt: string
-    response:
-      response: string
-compute:
-  gpu_required: true
-  memory: 16GB
 
 model:
   model:
@@ -32,17 +22,9 @@ model:
     fp16: true
     bf16: false
 
-trainer:
-  max_steps: 1000
-  val_check_interval: 100
-  gradient_clip_val: 1.0
+compute:
+  gpu_required: true
+  memory: 16GB
   precision: 16
   accelerator: "gpu"
   devices: 1
-
-data:
-  train_file: "data/alpaca_data.json"
-  validation_split: 0.1
-  max_seq_length: 512
-  batch_size: 4
-  num_workers: 4

@@ -318,3 +318,136 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 3. Commit your changes
 4. Push to the branch
 5. Create a Pull Request
+
+# NeMo PEFT Adapter Tuning with TensorRT-LLM Export
+
+This project demonstrates how to fine-tune a NeMo model using PEFT adapters and export it to TensorRT-LLM format for optimized inference.
+
+## Project Structure
+
+```
+.
+├── configs/                      # Training configuration files
+├── data/                        # Training data directory
+├── models/                      # Model checkpoints and exports
+├── results/                     # Training results and logs
+└── src/
+    ├── deployment/              # Deployment-related code
+    │   ├── app/                # Application code
+    │   │   ├── export_model.py # Model export script
+    │   │   └── server.py       # FastAPI server
+    │   ├── config/             # Deployment configuration
+    │   │   └── config.yaml     # Export configuration
+    │   ├── Dockerfile          # Docker configuration
+    │   └── requirements.txt    # Python dependencies
+    └── training/               # Training-related code
+        ├── data_prep.py       # Data preparation script
+        └── train.py           # Training script
+```
+
+## Prerequisites
+
+- NVIDIA GPU with CUDA support
+- Docker with NVIDIA Container Toolkit
+- Python 3.11 (for local development)
+
+## Setup
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+
+2. Build the Docker image:
+```bash
+docker build -t nemo-trtllm-exporter -f src/deployment/Dockerfile .
+```
+
+## Usage
+
+### Export Model to TensorRT-LLM
+
+To export a trained NeMo model to TensorRT-LLM format:
+
+```bash
+docker run --gpus all -v $(pwd):/app nemo-trtllm-exporter \
+    python src/deployment/app/export_model.py \
+    --config src/deployment/config/config.yaml \
+    --checkpoint results/megatron_gpt_peft_adapter_tuning/checkpoints/megatron_gpt_peft_adapter_tuning.nemo \
+    --export-dir exported_model
+```
+
+### Configuration
+
+The export process uses a configuration file (`src/deployment/config/config.yaml`) that specifies:
+- Model architecture parameters
+- Compute requirements
+- Export settings
+
+Example configuration:
+```yaml
+model:
+  model:
+    num_layers: 12
+    hidden_size: 768
+    num_attention_heads: 12
+    max_position_embeddings: 2048
+    precision: "16-mixed"
+    compute:
+      gpu_required: 1
+      memory: "16GB"
+      precision: "fp16"
+```
+
+## Development
+
+### Local Development
+
+1. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+2. Install dependencies:
+```bash
+pip install -r src/deployment/requirements.txt
+```
+
+3. Run the export script locally:
+```bash
+python src/deployment/app/export_model.py \
+    --config src/deployment/config/config.yaml \
+    --checkpoint results/megatron_gpt_peft_adapter_tuning/checkpoints/megatron_gpt_peft_adapter_tuning.nemo \
+    --export-dir exported_model
+```
+
+## Notes
+
+- The Docker image uses Python 3.11 from the deadsnakes PPA to ensure compatibility with NeMo 25.04
+- The export process requires specific versions of PyTorch and related packages
+- Make sure your GPU has enough memory for the model export process
+- The exported model will be saved in the specified export directory
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. Check GPU availability:
+```bash
+nvidia-smi
+```
+
+2. Verify Docker NVIDIA runtime:
+```bash
+docker info | grep "Runtimes"
+```
+
+3. Ensure the model checkpoint exists and is accessible
+4. Check the configuration file for correct model parameters
+5. Verify sufficient disk space for the export process
+
+## License
+
+[Your License Information]
