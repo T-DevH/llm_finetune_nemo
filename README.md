@@ -1,6 +1,6 @@
 # LLM Fine-Tuning with NVIDIA NeMo and TensorRT-LLM
 
-This project demonstrates how to fine-tune a NeMo model using PEFT adapters and export it to TensorRT-LLM format for optimized inference.
+This project demonstrates how to fine-tune a NeMo model using PEFT adapters.
 
 ## Prerequisites
 
