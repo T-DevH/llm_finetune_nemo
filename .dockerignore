@@ -1,0 +1,36 @@
+# Exclude results directory
+results/
+
+# Exclude any other large directories that aren't needed for the build
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.h5
+*.npy
+*.npz
+
+# Exclude git directory
+.git/
+
+# Exclude any other build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg 
