@@ -1,4 +1,4 @@
-# LLM Fine-Tuning with NVIDIA NeMo and TensorRT-LLM
+# LLM Fine-Tuning with NVIDIA NeMo.
 
 This project demonstrates how to fine-tune a NeMo model using PEFT adapters.
 
