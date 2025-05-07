@@ -150,8 +150,9 @@ async def generate_text(request: GenerationRequest):
         length_params = {
             "max_length": request.max_length,
             "min_length": request.min_length,
-            "compute_logprobs": True
+            "compute_logprobs": False
         }
+        logger.info(f"Length params: {length_params}")
         
         # Set up sampling parameters
         sampling_params = {
@@ -161,28 +162,46 @@ async def generate_text(request: GenerationRequest):
             "use_greedy": request.greedy,
             "repetition_penalty": request.repetition_penalty,
             "all_probs": False,
-            "compute_logprob": True
+            "compute_logprob": False,
+            "end_strings": None
         }
+        logger.info(f"Sampling params: {sampling_params}")
         
         # Generate text
-        output = model.generate(
-            inputs=[request.text],
-            length_params=length_params,
-            sampling_params=sampling_params
-        )
-        
-        # Get the generated text
-        if isinstance(output, torch.Tensor):
-            output_tokens = output[0].tolist()
-        else:
-            output_tokens = output[0]
-            
-        generated_text = model.tokenizer.ids_to_text(output_tokens)
-        
-        return {"generated_text": generated_text}
+        with torch.no_grad():
+            try:
+                # Format input according to the model's prompt template
+                formatted_input = f"{request.text} "
+                
+                # Create input dictionary
+                input_dict = {
+                    "inputs": formatted_input,
+                    "length_params": length_params,
+                    "sampling_params": sampling_params
+                }
+                
+                # Generate text using the model
+                output = model.generate(**input_dict)
+                
+                # Handle output based on its type
+                if isinstance(output, torch.Tensor):
+                    output_tokens = output[0].tolist()
+                else:
+                    output_tokens = output
+                
+                # Decode the output tokens
+                generated_text = model.tokenizer.ids_to_text(output_tokens)
+                logger.info(f"Generated text: {generated_text}")
+                
+                return {"generated_text": generated_text}
+                
+            except Exception as e:
+                logger.error(f"Error during generation: {str(e)}")
+                raise HTTPException(status_code=500, detail=f"Error generating text: {str(e)}")
+                
     except Exception as e:
         logger.error(f"Error generating text: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Error generating text: {str(e)}")
 
 @app.get("/health")
 async def health_check():
