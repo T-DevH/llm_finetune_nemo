@@ -1,6 +1,6 @@
 # LLM Fine-Tuning with NVIDIA NeMo.
 
-This project demonstrates how to fine-tune a NeMo model using PEFT adapters.
+This project demonstrates how to fine-tune a NeMo model using PEFT adapters. It provides my own experience and a developer perspective trying to establish and share best practices. I am also sharing how to build a NIM for deployment once finetuning is done. I will expand this work to cover more advanced topics  on how to leverage Nemo and NIMs for accuracy, quality and performance. 
 
 ## Prerequisites
 
