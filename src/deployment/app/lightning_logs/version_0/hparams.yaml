@@ -1,0 +1,66 @@
+cfg:
+  micro_batch_size: 4
+  tensor_model_parallel_size: 1
+  encoder_seq_length: 1024
+  max_position_embeddings: 1024
+  num_layers: 24
+  hidden_size: 1024
+  ffn_hidden_size: 4096
+  num_attention_heads: 16
+  init_method_std: 0.02
+  hidden_dropout: 0.1
+  kv_channels: null
+  apply_query_key_layer_scaling: true
+  layernorm_epsilon: 1.0e-05
+  make_vocab_size_divisible_by: 128
+  pre_process: true
+  post_process: true
+  persist_layer_norm: true
+  gradient_as_bucket_view: true
+  tokenizer:
+    library: megatron
+    type: GPT2BPETokenizer
+    model: null
+    vocab_file: nemo:bfcdca5e44814366bdb5dcd651325152_gpt2-vocab.json
+    merge_file: nemo:315a11fd68be49d6abdb34363e8c4997_gpt2-merge.txt
+  native_amp_init_scale: 4294967296
+  native_amp_growth_interval: 1000
+  hysteresis: 2
+  fp32_residual_connection: false
+  fp16_lm_cross_entropy: false
+  megatron_amp_O2: false
+  fp32_grad_accum: false
+  contiguous_grad_bucket: false
+  async_grad_allreduce: false
+  seed: 1234
+  use_cpu_initialization: false
+  onnx_safe: false
+  activations_checkpoint_method: null
+  activations_checkpoint_num_layers: 1
+  data:
+    data_prefix: ''
+    data_impl: mmap
+    splits_string: 900,50,50
+    seq_length: 1024
+    skip_warmup: true
+    num_workers: 0
+    dataloader_type: single
+    reset_position_ids: false
+    reset_attention_mask: false
+    eod_mask_loss: false
+  optim:
+    name: fused_adam
+    lr: 0.0002
+    weight_decay: 0.01
+    betas:
+    - 0.9
+    - 0.98
+    sched:
+      name: CosineAnnealing
+      warmup_steps: 500
+      constant_steps: 50000
+      min_lr: 2.0e-05
+  vocab_file: nemo:7c784db007ed4de0aa720f706920e8a0_gpt2-vocab.json
+  merges_file: nemo:2c48e8eb43ce47ab9aa182a95128a4fd_gpt2-merge.txt
+  target: nemo.collections.nlp.models.language_modeling.megatron_gpt_model.MegatronGPTModel
+  precision: 32-true

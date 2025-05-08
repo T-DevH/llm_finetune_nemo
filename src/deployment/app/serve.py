@@ -23,6 +23,11 @@ import json
 from pathlib import Path
 import nemo.collections.nlp as nemo_nlp
 from nemo.collections.nlp.modules.common.megatron.utils import parallel_state
+import torch.nn.functional as F
+from nemo.collections.nlp.modules.common.text_generation_utils import megatron_gpt_generate
+from nemo.collections.nlp.modules.common.megatron.utils import get_ltor_masks_and_position_ids
+from nemo.collections.nlp.modules.common.megatron.utils import average_losses_across_data_parallel_group
+from nemo.collections.nlp.modules.common.text_generation_utils import generate
 
 # Initialize distributed environment
 def init_distributed():
@@ -129,6 +134,7 @@ class GenerationRequest(BaseModel):
     top_k: int = 0
     greedy: bool = False
     repetition_penalty: float = 1.0
+    add_BOS: bool = False
 
 @dataclass
 class LengthParam:
@@ -142,66 +148,161 @@ class SamplingParam:
     top_p: float = 0.9
     greedy: bool = False
     repetition_penalty: float = 1.0
+    add_BOS: bool = False
 
 @app.post("/generate")
-async def generate_text(request: GenerationRequest):
+async def generate_text(request: GenerationRequest) -> GenerationResponse:
+    """Generate text using the loaded model."""
     try:
-        # Set up length parameters
-        length_params = {
-            "max_length": request.max_length,
-            "min_length": request.min_length,
-            "compute_logprobs": False
-        }
-        logger.info(f"Length params: {length_params}")
+        # Format the input with a structured prompt
+        formatted_input = f"User: {request.text}\nAgent:"
+        logger.info(f"Formatted input: {formatted_input}")
         
-        # Set up sampling parameters
-        sampling_params = {
-            "temperature": request.temperature,
-            "top_k": request.top_k,
-            "top_p": request.top_p,
-            "use_greedy": request.greedy,
-            "repetition_penalty": request.repetition_penalty,
-            "all_probs": False,
-            "compute_logprob": False,
-            "end_strings": None
-        }
-        logger.info(f"Sampling params: {sampling_params}")
+        # Tokenize input
+        tokens = model.tokenizer.text_to_ids(formatted_input)
+        tokens = torch.tensor([tokens], device=model.device)
+        seq_length = tokens.shape[1]
+        logger.info(f"Input tensor shape: {tokens.shape}")
+        
+        # Set up length parameters
+        max_length = request.max_length if request.max_length is not None else 100
+        min_length = 20  # Minimum length for a reasonable response
+        compute_logprobs = False
+        
+        # Set up sampling parameters with more focused values
+        temperature = 0.5  # Lower temperature for more focused generation
+        top_k = 0
+        top_p = 0.9
+        use_greedy = True  # Use greedy decoding for more predictable responses
+        repetition_penalty = 1.2  # Slightly higher repetition penalty
+        add_BOS = False
+        all_probs = False
+        compute_attention_mask = True
+        
+        logger.info(f"Generation parameters: max_length={max_length}, min_length={min_length}, "
+                   f"temperature={temperature}, top_k={top_k}, top_p={top_p}, "
+                   f"greedy={use_greedy}, repetition_penalty={repetition_penalty}")
+        
+        # Initialize distributed environment if not already initialized
+        if not torch.distributed.is_initialized():
+            torch.distributed.init_process_group(backend='nccl')
+            parallel_state.initialize_model_parallel(
+                tensor_model_parallel_size=1,
+                pipeline_model_parallel_size=1
+            )
         
         # Generate text
-        with torch.no_grad():
-            try:
-                # Format input according to the model's prompt template
-                formatted_input = f"{request.text} "
+        try:
+            # Create attention mask
+            attention_mask = torch.ones(1, seq_length, seq_length, device=tokens.device, dtype=torch.bool)
+            
+            # Initialize generation
+            current_length = seq_length
+            generated_tokens = []
+            
+            # Generate tokens
+            for _ in range(max_length - seq_length):
+                # Get model output
+                output = model.forward(
+                    tokens,
+                    position_ids=torch.arange(0, current_length, device=tokens.device).unsqueeze(0),
+                    attention_mask=attention_mask,
+                    labels=None
+                )
                 
-                # Create input dictionary
-                input_dict = {
-                    "inputs": formatted_input,
-                    "length_params": length_params,
-                    "sampling_params": sampling_params
-                }
+                # Get logits for the last token
+                logits = output.logits[:, -1, :]
+                logger.info(f"Logits shape: {output.logits.shape}")
                 
-                # Generate text using the model
-                output = model.generate(**input_dict)
+                # Apply temperature
+                if temperature > 0:
+                    logits = logits / temperature
                 
-                # Handle output based on its type
-                if isinstance(output, torch.Tensor):
-                    output_tokens = output[0].tolist()
+                # Apply repetition penalty
+                if repetition_penalty > 0:
+                    for token_id in set(generated_tokens):
+                        logits[0, token_id] /= repetition_penalty
+                
+                # Apply top-k filtering
+                if top_k > 0:
+                    indices_to_remove = logits < torch.topk(logits, top_k)[0][..., -1, None]
+                    logits[indices_to_remove] = float('-inf')
+                
+                # Apply top-p (nucleus) filtering
+                if top_p < 1.0:
+                    sorted_logits, sorted_indices = torch.sort(logits, descending=True)
+                    cumulative_probs = torch.cumsum(torch.softmax(sorted_logits, dim=-1), dim=-1)
+                    sorted_indices_to_remove = cumulative_probs > top_p
+                    sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
+                    sorted_indices_to_remove[..., 0] = 0
+                    indices_to_remove = sorted_indices_to_remove.scatter(1, sorted_indices, sorted_indices_to_remove)
+                    logits[indices_to_remove] = float('-inf')
+                
+                # Sample or use greedy decoding
+                if use_greedy:
+                    next_token = torch.argmax(logits, dim=-1)
                 else:
-                    output_tokens = output
+                    probs = torch.softmax(logits, dim=-1)
+                    next_token = torch.multinomial(probs, num_samples=1)
                 
-                # Decode the output tokens
-                generated_text = model.tokenizer.ids_to_text(output_tokens)
-                logger.info(f"Generated text: {generated_text}")
+                # Check for end of sequence
+                if next_token.item() == model.tokenizer.eos_id:
+                    break
                 
-                return {"generated_text": generated_text}
+                # Add token to sequence
+                generated_tokens.append(next_token.item())
+                tokens = torch.cat([tokens, next_token.unsqueeze(0)], dim=1)
+                current_length += 1
                 
-            except Exception as e:
-                logger.error(f"Error during generation: {str(e)}")
-                raise HTTPException(status_code=500, detail=f"Error generating text: {str(e)}")
-                
+                # Update attention mask
+                new_seq_length = tokens.shape[1]
+                attention_mask = torch.ones(1, new_seq_length, new_seq_length, device=tokens.device, dtype=torch.bool)
+            
+            # Decode the generated tokens
+            generated_text = model.tokenizer.ids_to_text(generated_tokens)
+            logger.info(f"Generated text: {generated_text}")
+            
+            # Extract only the agent's response
+            if "Agent:" in generated_text:
+                response = generated_text.split("Agent:")[-1].strip()
+            else:
+                response = generated_text.strip()
+            
+            # Validate response
+            if len(response) < min_length or not any(c.isalpha() for c in response):
+                response = "I apologize, but I'm having trouble generating a proper response. Please try rephrasing your request or contact our customer service directly."
+            
+            return GenerationResponse(text=response)
+            
+        except Exception as e:
+            logger.error(f"Error during generation: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Error during generation: {str(e)}")
+            
     except Exception as e:
-        logger.error(f"Error generating text: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error generating text: {str(e)}")
+        logger.error(f"Error in generate_text: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error in generate_text: {str(e)}")
+
+# Helper functions for sampling
+def top_k_sampling(logits, k):
+    v, _ = torch.topk(logits, k)
+    min_value = v[:, -1].unsqueeze(-1)
+    logits = torch.where(logits < min_value, torch.ones_like(logits) * -float('Inf'), logits)
+    return logits
+
+def top_p_sampling(logits, p):
+    sorted_logits, sorted_indices = torch.sort(logits, descending=True)
+    cumulative_probs = torch.cumsum(F.softmax(sorted_logits, dim=-1), dim=-1)
+    
+    # Remove tokens with cumulative probability above the threshold
+    sorted_indices_to_remove = cumulative_probs > p
+    # Shift the indices to the right to keep also the first token above the threshold
+    sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
+    sorted_indices_to_remove[..., 0] = 0
+    
+    # Scatter sorted tensors to original indexing
+    indices_to_remove = sorted_indices_to_remove.scatter(1, sorted_indices, sorted_indices_to_remove)
+    logits = logits.masked_fill(indices_to_remove, -float('Inf'))
+    return logits
 
 @app.get("/health")
 async def health_check():
