@@ -284,47 +284,6 @@ Common issues and solutions:
    - Integration with TensorRT-LLM for optimized inference
    - Advanced model parallelism techniques
 
-## Configuration Details
-
-### Training Configuration
-
-The training configuration (`configs/training_config.yaml`) includes:
-- Model architecture parameters
-- PEFT adapter settings
-- Training hyperparameters
-- Data configuration
-
-### Export Configuration
-
-The export configuration (`src/deployment/config/config.yaml`) specifies:
-- Model architecture parameters
-- Compute requirements
-- Export settings
-
-
-## Troubleshooting
-
-If you encounter issues:
-
-1. Check GPU availability:
-```bash
-nvidia-smi
-```
-
-2. Verify Docker NVIDIA runtime:
-```bash
-docker info | grep "Runtimes"
-```
-
-3. Training issues:
-   - Check GPU memory usage
-   - Verify data format
-   - Adjust batch size if needed
-
-4. Export issues:
-   - Ensure model checkpoint exists
-   - Check configuration parameters
-   - Verify sufficient disk space
 
 ## License
 
