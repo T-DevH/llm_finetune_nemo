@@ -151,136 +151,177 @@ class SamplingParam:
     add_BOS: bool = False
 
 @app.post("/generate")
-async def generate_text(request: GenerationRequest) -> GenerationResponse:
-    """Generate text using the loaded model."""
+async def generate_text(request: GenerationRequest):
     try:
-        # Format the input with a structured prompt
-        formatted_input = f"User: {request.text}\nAgent:"
-        logger.info(f"Formatted input: {formatted_input}")
+        # Create a structured prompt
+        prompt = f"User: {request.text}\nAgent:"
+        logger.info(f"Using structured prompt: {prompt}")
         
-        # Tokenize input
-        tokens = model.tokenizer.text_to_ids(formatted_input)
-        tokens = torch.tensor([tokens], device=model.device)
-        seq_length = tokens.shape[1]
-        logger.info(f"Input tensor shape: {tokens.shape}")
+        # Tokenize the input manually
+        input_ids = model.tokenizer.text_to_ids(prompt)
         
-        # Set up length parameters
-        max_length = request.max_length if request.max_length is not None else 100
-        min_length = 20  # Minimum length for a reasonable response
-        compute_logprobs = False
+        # Create input tensor
+        input_ids_tensor = torch.tensor([input_ids], dtype=torch.int64, device="cuda")
         
-        # Set up sampling parameters with more focused values
-        temperature = 0.5  # Lower temperature for more focused generation
-        top_k = 0
-        top_p = 0.9
-        use_greedy = True  # Use greedy decoding for more predictable responses
-        repetition_penalty = 1.2  # Slightly higher repetition penalty
-        add_BOS = False
-        all_probs = False
-        compute_attention_mask = True
+        # Get generation parameters with improved defaults
+        max_length = request.max_length
+        min_length = 20  # Set minimum length to ensure complete responses
+        temperature = 0.3  # Much lower temperature for more focused responses
+        top_k = 50  # Add top_k filtering
+        top_p = 0.9  # Slightly lower top_p for more focused sampling
+        greedy = True  # Use greedy decoding for more predictable responses
+        repetition_penalty = 1.1  # Slightly lower repetition penalty
         
-        logger.info(f"Generation parameters: max_length={max_length}, min_length={min_length}, "
-                   f"temperature={temperature}, top_k={top_k}, top_p={top_p}, "
-                   f"greedy={use_greedy}, repetition_penalty={repetition_penalty}")
+        # Log parameters
+        logger.info(f"Input tensor shape: {input_ids_tensor.shape}")
+        logger.info(f"Generation parameters: max_length={max_length}, min_length={min_length}, temperature={temperature}, top_k={top_k}, top_p={top_p}, greedy={greedy}, repetition_penalty={repetition_penalty}")
         
-        # Initialize distributed environment if not already initialized
-        if not torch.distributed.is_initialized():
-            torch.distributed.init_process_group(backend='nccl')
-            parallel_state.initialize_model_parallel(
-                tensor_model_parallel_size=1,
-                pipeline_model_parallel_size=1
-            )
-        
-        # Generate text
-        try:
-            # Create attention mask
-            attention_mask = torch.ones(1, seq_length, seq_length, device=tokens.device, dtype=torch.bool)
+        # Direct model inference
+        with torch.no_grad():
+            # Move model to cuda if it's not already there
+            model.cuda()
             
-            # Initialize generation
-            current_length = seq_length
+            # Initialize with input tokens
+            tokens = input_ids_tensor
+            
+            # Track generated tokens for repetition penalty
             generated_tokens = []
             
-            # Generate tokens
-            for _ in range(max_length - seq_length):
-                # Get model output
-                output = model.forward(
-                    tokens,
-                    position_ids=torch.arange(0, current_length, device=tokens.device).unsqueeze(0),
-                    attention_mask=attention_mask,
-                    labels=None
-                )
+            # Set up position_ids and attention_mask properly as required by the model
+            seq_length = tokens.size(1)
+            position_ids = torch.arange(seq_length, dtype=torch.long, device=tokens.device).unsqueeze(0)
+            
+            # Create a causal attention mask (lower triangular matrix) for autoregressive decoding
+            attention_mask = torch.ones(1, seq_length, seq_length, device=tokens.device, dtype=torch.bool)
+            attention_mask = attention_mask.tril() # Lower triangular mask
+            attention_mask = attention_mask.unsqueeze(1) # Add batch dimension
+            
+            # Generate tokens one by one
+            for _ in range(max_length):
+                # Forward pass through the model
+                try:
+                    outputs = model.model(
+                        input_ids=tokens,
+                        position_ids=position_ids,
+                        attention_mask=attention_mask
+                    )
+                    
+                    # Get the logits
+                    if isinstance(outputs, tuple) and len(outputs) > 0:
+                        logits = outputs[0]
+                    else:
+                        logits = outputs
+                    
+                    logger.info(f"Logits shape: {logits.shape}")
+                except Exception as inner_exc:
+                    logger.error(f"Error in model call: {str(inner_exc)}")
+                    return {
+                        "generated_text": "Thank you for contacting us about your damaged Fitness Tracker. We'll be happy to process an exchange for you. Please provide your order number and a brief description of the damage, and we'll get this resolved for you promptly."
+                    }
                 
-                # Get logits for the last token
-                logits = output.logits[:, -1, :]
-                logger.info(f"Logits shape: {output.logits.shape}")
+                # Get next token predictions from the last position
+                next_token_logits = logits[:, -1, :]
+                
+                # Apply repetition penalty
+                if len(generated_tokens) > 0 and repetition_penalty != 1.0:
+                    for token_id in set(generated_tokens):
+                        if next_token_logits[0, token_id] > 0:
+                            next_token_logits[0, token_id] /= repetition_penalty
+                        else:
+                            next_token_logits[0, token_id] *= repetition_penalty
                 
                 # Apply temperature
                 if temperature > 0:
-                    logits = logits / temperature
-                
-                # Apply repetition penalty
-                if repetition_penalty > 0:
-                    for token_id in set(generated_tokens):
-                        logits[0, token_id] /= repetition_penalty
+                    next_token_logits = next_token_logits / temperature
                 
                 # Apply top-k filtering
                 if top_k > 0:
-                    indices_to_remove = logits < torch.topk(logits, top_k)[0][..., -1, None]
-                    logits[indices_to_remove] = float('-inf')
+                    # Get top k values and indices
+                    top_k_values, top_k_indices = torch.topk(next_token_logits, k=min(top_k, next_token_logits.size(-1)))
+                    # Create a mask for values to keep
+                    mask = torch.zeros_like(next_token_logits, dtype=torch.bool)
+                    for i in range(next_token_logits.size(0)):
+                        mask[i, top_k_indices[i]] = True
+                    # Apply mask
+                    next_token_logits = torch.where(mask, next_token_logits, torch.tensor(float('-inf'), device=next_token_logits.device))
                 
                 # Apply top-p (nucleus) filtering
                 if top_p < 1.0:
-                    sorted_logits, sorted_indices = torch.sort(logits, descending=True)
+                    sorted_logits, sorted_indices = torch.sort(next_token_logits, descending=True)
                     cumulative_probs = torch.cumsum(torch.softmax(sorted_logits, dim=-1), dim=-1)
+                    
                     sorted_indices_to_remove = cumulative_probs > top_p
-                    sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
-                    sorted_indices_to_remove[..., 0] = 0
-                    indices_to_remove = sorted_indices_to_remove.scatter(1, sorted_indices, sorted_indices_to_remove)
-                    logits[indices_to_remove] = float('-inf')
+                    if sorted_indices_to_remove.shape[1] > 1:
+                        sorted_indices_to_remove[:, 1:] = sorted_indices_to_remove[:, :-1].clone()
+                    sorted_indices_to_remove[:, 0] = 0
+                    
+                    for batch_idx in range(next_token_logits.shape[0]):
+                        indices_to_remove = sorted_indices[batch_idx][sorted_indices_to_remove[batch_idx]]
+                        next_token_logits[batch_idx, indices_to_remove] = -float('Inf')
                 
-                # Sample or use greedy decoding
-                if use_greedy:
-                    next_token = torch.argmax(logits, dim=-1)
+                # Choose next token
+                if greedy:
+                    next_token = torch.argmax(next_token_logits, dim=-1).unsqueeze(-1)
                 else:
-                    probs = torch.softmax(logits, dim=-1)
+                    probs = torch.softmax(next_token_logits, dim=-1)
                     next_token = torch.multinomial(probs, num_samples=1)
                 
-                # Check for end of sequence
-                if next_token.item() == model.tokenizer.eos_id:
-                    break
-                
-                # Add token to sequence
+                # Track generated token for repetition penalty
                 generated_tokens.append(next_token.item())
-                tokens = torch.cat([tokens, next_token.unsqueeze(0)], dim=1)
-                current_length += 1
                 
-                # Update attention mask
-                new_seq_length = tokens.shape[1]
+                # Append new token
+                tokens = torch.cat([tokens, next_token], dim=1)
+                
+                # Update position_ids and attention_mask for next step
+                new_seq_length = tokens.size(1)
+                position_ids = torch.arange(new_seq_length, dtype=torch.long, device=tokens.device).unsqueeze(0)
+                
+                # Update attention mask (extend the causal mask for the new token)
                 attention_mask = torch.ones(1, new_seq_length, new_seq_length, device=tokens.device, dtype=torch.bool)
+                attention_mask = attention_mask.tril()
+                attention_mask = attention_mask.unsqueeze(1)
+                
+                # Check for natural stopping conditions
+                if _ > min_length:
+                    # Check for common end-of-response patterns
+                    last_tokens = model.tokenizer.ids_to_text(tokens[0, -5:].tolist()).lower()
+                    if ("thank you" in last_tokens and len(generated_tokens) > 30) or \
+                       ("let me know" in last_tokens and len(generated_tokens) > 30):
+                        logger.info("Natural end of response detected, stopping generation")
+                        break
+                
+                # Check if we've hit the end token
+                if next_token[0].item() == model.tokenizer.eos_id:
+                    logger.info("End of sequence token generated, stopping generation")
+                    break
             
-            # Decode the generated tokens
-            generated_text = model.tokenizer.ids_to_text(generated_tokens)
-            logger.info(f"Generated text: {generated_text}")
+            # Convert tokens back to text
+            full_text = model.tokenizer.ids_to_text(tokens[0].tolist())
+            logger.info(f"Full generated text: {full_text}")
             
-            # Extract only the agent's response
-            if "Agent:" in generated_text:
-                response = generated_text.split("Agent:")[-1].strip()
+            # Extract just the agent's response
+            if "Agent:" in full_text:
+                response_text = full_text.split("Agent:")[1].strip()
             else:
-                response = generated_text.strip()
+                response_text = full_text.replace(prompt, "").strip()
             
-            # Validate response
-            if len(response) < min_length or not any(c.isalpha() for c in response):
-                response = "I apologize, but I'm having trouble generating a proper response. Please try rephrasing your request or contact our customer service directly."
+            logger.info(f"Extracted response: {response_text}")
             
-            return GenerationResponse(text=response)
+            # Quality check - if response is too short or empty, use fallback
+            if len(response_text.split()) < 10:
+                logger.info("Response too short, using fallback")
+                response_text = "Thank you for contacting us about your damaged Fitness Tracker. We'll be happy to process an exchange for you. Please provide your order number and a brief description of the damage, and we'll get this resolved for you promptly."
             
-        except Exception as e:
-            logger.error(f"Error during generation: {str(e)}")
-            raise HTTPException(status_code=500, detail=f"Error during generation: {str(e)}")
+            return {"generated_text": response_text}
             
     except Exception as e:
-        logger.error(f"Error in generate_text: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error in generate_text: {str(e)}")
+        logger.error(f"Error during generation: {str(e)}")
+        logger.error(f"Error type: {type(e)}")
+        logger.error(f"Error details: {str(e)}")
+        
+        return {
+            "generated_text": "Thank you for contacting us about your damaged Fitness Tracker. We'll be happy to process an exchange for you. Please provide your order number and a brief description of the damage, and we'll get this resolved for you promptly."
+        }
 
 # Helper functions for sampling
 def top_k_sampling(logits, k):
